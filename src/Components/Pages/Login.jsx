@@ -57,7 +57,7 @@ const Login = () => {
             <AiOutlineClose size={30} className="hover:bg-black" />
           </div>
           <div className="max-w-[320px] mx-auto py-16">
-            <h1 className="text-3xl font-bold text-center">Sign In</h1>
+            <h1 className="font-bold text-center">Sign In</h1>
             <Form
               name="normal_login"
               className="login-form w-full flex flex-col py-4"
@@ -99,7 +99,7 @@ const Login = () => {
               </Form.Item>
               <Form.Item className="flex justify-between items-center text-sm text-gray-600" >
                 <Form.Item name="remember" valuePropName="checked" noStyle >
-                  <Checkbox><h3 className="text-white">Remember me</h3></Checkbox>
+                  <Checkbox ><h3 className="text-white">Remember me</h3></Checkbox>
                 </Form.Item>
 
                 <a className="login-form-forgot text-white   " href="">
@@ -111,7 +111,7 @@ const Login = () => {
                 <Button
                   type="primary"
                   htmlType="submit"
-                 className="  login-form-button "
+                 className="  login-form-button justify-center "
                 >
                   Log in
                 </Button> <br/>
