@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import requests from "../../Request";
+import { UserAuth } from "../../features/Auth/AuthContext";
 import { AiOutlineClose } from "react-icons/ai";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Form, Button, Input, Checkbox } from "antd";
@@ -111,7 +112,7 @@ const Login = () => {
                 <Button
                   type="primary"
                   htmlType="submit"
-                 className="  login-form-button justify-center "
+                  className="login-form-btn-primary"
                 >
                   Log in
                 </Button> <br/>
