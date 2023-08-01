@@ -2,13 +2,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* body,
-html {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-}
-*/ 
 .body {
   background-color: #000000;
   font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -26,8 +19,14 @@ select:focus {
 button {
   @apply bg-gradient-to-r from-[var(--primary-purple)] to-[var(--primary-orange)] p-3 px-7 rounded-3xl;
 }
+Button {
+  @apply bg-gradient-to-r from-[var(--primary-purple)] to-[var(--primary-orange)] p-3 px-7 rounded-3xl;
+}
 h1 {
   @apply text-4xl font-bold;
+}
+h2 {
+  @apply md:text-xl font-bold;
 }
 li {
   @apply p-4;
