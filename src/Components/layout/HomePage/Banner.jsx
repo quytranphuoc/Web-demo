@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import requests from "../../../Request";
+import Layout from "antd/es/layout/layout";
 const Banner = () => {
   const [movies, setMovies] = useState([]);
 
@@ -13,7 +14,8 @@ const Banner = () => {
   }, []);
   //   console.log(movie);
   return (
-    <div className="w-full h-[600px] text-white">
+    <Layout>
+      <div className="w-full h-[600px] text-white">
       <div className="w-full h-full ">
         <div className="absolute w-full h-[600px] bg-gradient-to-r from-black"></div>
         <img
@@ -35,6 +37,7 @@ const Banner = () => {
         </div>
       </div>
     </div>
+    </Layout>
   );
 };
 
