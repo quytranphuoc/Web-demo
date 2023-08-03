@@ -57,7 +57,7 @@ const Header = () => {
           <div>
             <div className="hidden md:flex">
               <ul className="flex text-white items-center">
-                <NavLink to="/movie" className={Hover}>
+                <NavLink to="/movies" className={Hover}>
                   <li>Movie</li>
                 </NavLink>
                 <NavLink to="/about-us" className={Hover}>

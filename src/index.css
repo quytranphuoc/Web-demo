@@ -10,7 +10,7 @@
   --primary-orange: #f45d3f;
   --primary-purple: #6a00ff;
 }
- input:focus,
+input:focus,
 textarea:focus,
 select:focus {
   outline: 0 !important;
@@ -27,6 +27,9 @@ h1 {
 }
 h2 {
   @apply md:text-xl font-bold;
+}
+h3 {
+  @apply text-xl lg:text-3xl;
 }
 li {
   @apply p-4;
@@ -317,10 +320,9 @@ li {
   }
 }
 
-
 .line-clamp-4 {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    -webkit-line-clamp: 4; /* Số dòng muốn hiển thị */
-  }
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 4; /* Số dòng muốn hiển thị */
+}
