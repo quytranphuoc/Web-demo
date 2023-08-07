@@ -30,36 +30,63 @@ const Header = () => {
         </Link>
         {/* Account */}
         {user?.email ? (
-          <div className="flex flex-wrap items-center justify-center">
-            <ul className="flex text-white items-center">
-              <NavLink to="/movies" className={Hover}>
-                <li>Movie</li>
-              </NavLink>
-              <NavLink to="/about-us" className={Hover}>
-                <li>About Us</li>
-              </NavLink>
-              <NavLink to="/contact-us" className={Hover}>
-                <li>Contact Us</li>
-              </NavLink>
-              <NavLink to="/account">
-                <div className="text-blue-600 text-center items-end">
-                  <FaRegUserCircle
-                    className="flex flex-wrap items-center justify-center w-full"
-                    size={30}
-                  />
-                  Account
-                </div>
-              </NavLink>
-              <button onClick={handleLogout}>LogOut</button>
-            </ul>
+          <div>
+            <div className="flex flex-wrap items-center justify-center">
+              <ul className="flex text-white items-center">
+                <NavLink to="/movies" className={Hover}>
+                  <li>Movie</li>
+                </NavLink>
+                <NavLink to="/about-us" className={Hover}>
+                  <li>About Us</li>
+                </NavLink>
+                <NavLink to="/contact-us" className={Hover}>
+                  <li>Contact Us</li>
+                </NavLink>
+                <NavLink to="/account">
+                  <div className="text-blue-600 text-center items-end">
+                    <FaRegUserCircle
+                      className="flex flex-wrap items-center justify-center w-full"
+                      size={30}
+                    />
+                    Account
+                  </div>
+                </NavLink>
+                <button onClick={handleLogout}>LogOut</button>
+              </ul>
+            </div>
+            <div onClick={handleNav} className="block md:hidden">
+              {nav ? (
+                <AiOutlineClose size={30} className="text-white" />
+              ) : (
+                <AiOutlineMenu size={30} className="text-white" />
+              )}
+            </div>
+            {/* {Mobile Menu} */}
+            <div
+              className={
+                nav
+                  ? "w-full bg-purple-500 bg-opacity-80 text-white absolute top-[90px] left-0 flex justify-center text-center"
+                  : "absolute left-[-100%]"
+              }
+            >
+              <ul>
+                <li className="text-2xl">PLatform</li>
+                <li className="text-2xl">Developers</li>
+                <li className="text-2xl">Community</li>
+                <li className="text-2xl">About</li>
+                <NavLink to="/login">
+                  <button>Sign In</button>
+                </NavLink>
+                <NavLink to="/signup">
+                  <button>Sign Up</button>
+                </NavLink>
+              </ul>
+            </div>
           </div>
         ) : (
           <div>
             <div className="hidden md:flex">
               <ul className="flex text-white items-center">
-                <NavLink to="/movies" className={Hover}>
-                  <li>Movie</li>
-                </NavLink>
                 <NavLink to="/about-us" className={Hover}>
                   <li>About Us</li>
                 </NavLink>

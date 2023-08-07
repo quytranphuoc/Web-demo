@@ -4,6 +4,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { UserAuth } from "../../../features/Auth/AuthContext";
 import { db } from "../../../firebase";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import MovieCasts from "../components/Single/MovieCasts";
 function Movie({ movie }) {
   const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -16,9 +17,9 @@ function Movie({ movie }) {
       setSaved(true);
       await updateDoc(movieID, {
         savedShows: arrayUnion({
-          // id: movie.id,
-          // title: movie.title,
-          // img: movie.backdrop_path,
+          id: movie.id,
+          title: movie.title,
+          img: movie.backdrop_path,
         }),
       });
     } else {
@@ -36,7 +37,7 @@ function Movie({ movie }) {
           />
         </Link>
         <div className="absolute flex-btn gap-2 bottom-0 right-0 left-0 bg-main bg-opacity-60 text-white px-4 py-3">
-          <h3 className="font-semibold truncate">{movie?.name}</h3>
+          <h4 className="font-semibold truncate ">{movie?.name}</h4>
           <button className="h-9 w-9 text-sm flex-colo transitions hover:bg-transparent border-2 border-subMain rounded-md bg-subMain text-white"
             onClick={saveShow}>
             {like ? (
@@ -45,8 +46,10 @@ function Movie({ movie }) {
               <FaRegHeart/>
             )}
           </button>
+
         </div>
       </div>
+
     </>
   );
 }

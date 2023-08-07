@@ -1,5 +1,6 @@
 export const Movies = [
   {
+    id: 1,
     name: 'Army Of  The Dead',
     desc: 'Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.',
     titleImage: '1a.jpg',
@@ -13,6 +14,7 @@ export const Movies = [
     reviews: 23,
   },
   {
+    id: 2,
     name: 'The Conjuring',
     desc: 'Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.',
     titleImage: '22.jpeg',
@@ -26,6 +28,7 @@ export const Movies = [
     reviews: 100,
   },
   {
+    id: 3,
     name: 'My Favorite Person',
     desc: 'Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.',
     titleImage: '33.jpg',
@@ -39,6 +42,7 @@ export const Movies = [
     reviews: 2,
   },
   {
+    id: 3,
     name: 'Lets Be a crops',
     desc: 'Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.',
     titleImage: '44.jpg',
@@ -52,6 +56,7 @@ export const Movies = [
     reviews: 6,
   },
   {
+    id: 4,
     name: 'Below her mouth',
     desc: 'Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.',
     titleImage: '55.jpg',
@@ -65,6 +70,7 @@ export const Movies = [
     reviews: 56,
   },
   {
+    id: 5,
     name: 'Legend of the seeker',
     desc: 'Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.',
     titleImage: '66.jpg',
@@ -78,6 +84,7 @@ export const Movies = [
     reviews: 34,
   },
   {
+    id: 6,
     name: 'Scarlet Heart',
     desc: 'Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.',
     titleImage: '77.jpg',
@@ -91,7 +98,9 @@ export const Movies = [
     reviews: 0,
   },
   {
+    id: 7,
     name: 'The Last Dance',
+    title: 'The Last Dance',
     desc: 'Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.',
     titleImage: '88.jpg',
     image: '8.jpg',
@@ -104,7 +113,9 @@ export const Movies = [
     reviews: 0,
   },
   {
+    id: 8,
     name: 'Titanic',
+    title: "Titanic",
     desc: 'Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.',
     titleImage: '99.jpg',
     image: '9.jpg',
@@ -117,7 +128,9 @@ export const Movies = [
     reviews: 1,
   },
   {
+    id: 9,
     name: 'About Time of the Dead',
+    title: "About Time of the Dead",
     desc: 'Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.',
     titleImage: '101.jpg',
     image: '10.jpg',
@@ -130,7 +143,9 @@ export const Movies = [
     reviews: 4,
   },
   {
+    id: 10,
     name: 'Game of Thrones',
+    title: 'Game of Thrones',
     desc: 'Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.',
     titleImage: '111.webp',
     image: '11.jpg',
