@@ -2,13 +2,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* body,
-html {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-}
-*/ 
 .body {
   background-color: #000000;
   font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -17,7 +10,7 @@ html {
   --primary-orange: #f45d3f;
   --primary-purple: #6a00ff;
 }
- input:focus,
+input:focus,
 textarea:focus,
 select:focus {
   outline: 0 !important;
@@ -26,8 +19,17 @@ select:focus {
 button {
   @apply bg-gradient-to-r from-[var(--primary-purple)] to-[var(--primary-orange)] p-3 px-7 rounded-3xl;
 }
+Button {
+  @apply bg-gradient-to-r from-[var(--primary-purple)] to-[var(--primary-orange)] p-3 px-7 rounded-3xl;
+}
 h1 {
   @apply text-4xl font-bold;
+}
+h2 {
+  @apply md:text-xl font-bold;
+}
+h3 {
+  @apply text-xl lg:text-3xl;
 }
 li {
   @apply p-4;
@@ -316,4 +318,11 @@ li {
   .drawer .drawer-content-wrapper {
     width: 420px;
   }
+}
+
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 4; /* Số dòng muốn hiển thị */
 }
