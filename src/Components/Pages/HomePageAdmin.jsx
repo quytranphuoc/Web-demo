@@ -4,7 +4,7 @@ import Row from "../layout/HomePage/Slider/Row";
 import requests from "../../Request";
 import Layout from "../Layout";
 import Content from "../layout/HomePage/Content";
-const HomePage = () => {
+const HomePageAdmin = () => {
   return (
     <>
       <Layout>
@@ -24,4 +24,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default HomePageAdmin;

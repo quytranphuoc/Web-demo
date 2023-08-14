@@ -5,7 +5,7 @@ import { UserAuth } from "../../features/Auth/AuthContext";
 import requests from "../../Request";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
-const Login = () => {
+const LoginAdmin = () => {
   const [movies, setMovies] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,7 +25,7 @@ const Login = () => {
     setError("");
     try {
       await logIn(email, password);
-      navigate("/");
+      navigate("/*");
     } catch (error) {
       console.log(error);
       setError(error.message);
@@ -35,7 +35,7 @@ const Login = () => {
   const handleDelete = async () => {
     setError("");
     try {
-      navigate("/");
+      navigate("/*");
     } catch (error) {
       console.log(error);
       setError(error.message);
@@ -73,7 +73,7 @@ const Login = () => {
               />
               <input
                 onChange={(e) => setPassword(e.target.value)}
-                className="p-3 my-2 bg-gray-700 rouded"
+                className="p-3 my-2 bg-gray-700 rounded"
                 type="password"
                 placeholder="Password"
                 autoComplete="current-password"
@@ -89,13 +89,13 @@ const Login = () => {
               </div>
               <div className="py-8 my-3 mx-3">
                 <p>
-                  {" "}
                   <span className="text-gray-600">New to Mor?</span>
+                  <span className="text-subMain"> or </span>
+                  <Link to="/login" className="hover:text-teal-950">
+                    Log In
+                  </Link>
                 </p>
-                <div className="justify-center items-center">
-                  <Link to="/signup" className="hover:text-teal-950">Sign Up</Link><span className="text-subMain"> or </span>
-                 <Link to="/login-admin" className="hover:text-teal-950">Dashboard</Link>
-                </div>
+                
               </div>
             </form>
           </div>
@@ -105,4 +105,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginAdmin;

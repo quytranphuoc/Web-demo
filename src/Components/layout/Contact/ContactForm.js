@@ -91,6 +91,8 @@ const App = () => {
       >
         <Option value="86">+86</Option>
         <Option value="87">+87</Option>
+        <Option value="88">+88</Option>
+        <Option value="89">+89</Option>
       </Select>
     </Form.Item>
   );
@@ -130,7 +132,7 @@ const App = () => {
         onFinish={onFinish}
         initialValues={{
           residence: ["zhejiang", "hangzhou", "xihu"],
-          prefix: "86",
+          prefix: "88",
         }}
         style={{
           maxWidth: 600,

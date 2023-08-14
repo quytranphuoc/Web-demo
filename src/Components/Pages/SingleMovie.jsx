@@ -5,7 +5,7 @@ import MovieInfo from "../layout/components/Single/MovieInfo";
 import MovieRates from "../layout/components/Single/MovieRates";
 import Titles from "../layout/components/Titles";
 import { Movies } from "../../Data/MovieData";
-import Layout from "antd/es/layout/layout";
+import Layout from "../Layout";
 import { BsCollectionFill } from "react-icons/bs";
 import Movie from "../layout/Movies/Movie";
 import ShareMovieModal from "../layout/components/Modals/ShareModal";
@@ -13,7 +13,7 @@ import ShareMovieModal from "../layout/components/Modals/ShareModal";
 function SingleMovie() {
   const [modalOpen, setModalOpen] = useState(false);
   const { id } = useParams();
-  const movie = Movies.find((movie) => movie.name === id);
+  const movie = Movies.find((movie) => movie.title === id);
   const RelatedMovies = Movies.filter((m) => m.category === movie.category);
   return (
     <Layout>

@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import HeroImg from "../../assets/logo.webp";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { FaRegUserCircle } from "react-icons/fa";
+import { MdAdminPanelSettings } from "react-icons/md";
 import { UserAuth } from "../../features/Auth/AuthContext";
-const Header = () => {
+const HeaderAdmin = () => {
   const { user, logOut } = UserAuth();
+  // const {currentUser, logOut} = UserAuth();
   const [nav, setNav] = useState(false);
 
   const hover = "hover:text-subMain transitions text-white";
@@ -17,7 +18,7 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       await logOut();
-      navigate("/");
+      navigate("/*");
     } catch (error) {
       console.log(error);
     }
@@ -25,30 +26,30 @@ const Header = () => {
   return (
     <div className="w-full h-[90px] bg-purple-500 bg-opacity-80">
       <div className="flex items-center justify-between p-4 z-[100] w-full absolute">
-        <Link to="/">
+        <Link to="/*admin">
           <img src={HeroImg} alt="logo" className="w-20" size="40" />
         </Link>
         {/* Account */}
         {user?.email ? (
           <div>
-            <div className="flex flex-wrap items-center justify-center ">
+            <div className="flex flex-wrap items-center justify-center">
               <ul className="flex text-white items-center">
-                <NavLink to="/movies" className={Hover}>
+                <NavLink to="/*movies" className={Hover}>
                   <li>Movie</li>
                 </NavLink>
-                <NavLink to="/about-us" className={Hover}>
+                <NavLink to="/*about-us" className={Hover}>
                   <li>About Us</li>
                 </NavLink>
-                <NavLink to="/contact-us" className={Hover}>
+                <NavLink to="/*contact-us" className={Hover}>
                   <li>Contact Us</li>
                 </NavLink>
-                <NavLink to="/account">
-                  <div className="text-blue-600 text-center items-end hover:text-subMain hover:scale-110 ">
-                    <FaRegUserCircle
-                      className="flex flex-wrap items-center justify-center w-full"
+                <NavLink to="/dashboard">
+                  <div className="text-blue-600 text-center items-end hover:text-subMain hover:scale-110">
+                    <MdAdminPanelSettings
+                      className="flex flex-wrap items-center justify-center w-full hover:text-subMain"
                       size={30}
                     />
-                    Account
+                    Dashboard
                   </div>
                 </NavLink>
                 <button onClick={handleLogout} className="hover:shadow-md hover:scale-110">LogOut</button>
@@ -140,4 +141,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderAdmin;

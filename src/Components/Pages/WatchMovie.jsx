@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Movies } from "../../Data/MovieData";
-import Layout from "antd/es/layout/layout";
+import Layout from "../Layout";
 import { BiArrowBack } from "react-icons/bi";
 import { FaCloudDownloadAlt, FaHeart, FaPlay } from "react-icons/fa";
 

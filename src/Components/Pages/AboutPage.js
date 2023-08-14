@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from 'antd/es/layout/layout';
+import Layout from '../Layout';
 import Head from '../layout/components/Head';
 function AboutPage() {
   return (
@@ -36,15 +36,15 @@ function AboutPage() {
                 </p>
               </div>
               <div className="grid md:grid-cols-2 gap-6 mt-8">
-                <div className="p-8 bg-dry rounded-lg">
-                  <span className="block font-extrabold text-black "><h1>10K</h1></span>
+                <div className="p-8 bg-dry rounded-lg" data-aos = "fade-up" data-aos-duration = "2000">
+                  <span className="block font-extrabold text-red-700 "><h1>10K</h1></span>
                   <h4 className="text-lg font-semibold my-2">Listed Movies</h4>
                   <p className="mb-0 text-text leading-7 text-sm">
                     Lorem Ipsum is simply dummy text of the printing and
                   </p>
                 </div>
-                <div className="p-8 bg-dry rounded-lg">
-                  <span className="text-3xl block font-extrabold"><h1>8K</h1></span>
+                <div className="p-8 bg-dry rounded-lg" data-aos = "fade-up" data-aos-duration = "2000">
+                  <span className="block font-extrabold text-red-700"><h1>8K</h1></span>
                   <h4 className="text-lg font-semibold my-2">Lovely Users</h4>
                   <p className="mb-0 text-text leading-7 text-sm">
                     Completely free, without registration! Lorem Ipsum is simply

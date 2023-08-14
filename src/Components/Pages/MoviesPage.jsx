@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Filters from "../layout/Movies/FIlters";
-import Layout from "antd/es/layout/layout";
+import Filters from "../layout/Movies/Filters";
+import Layout from "../Layout";
 import Movie from "../layout/Movies/Movie";
 import { Movies } from "../../Data/MovieData";
 import { CgSpinner } from "react-icons/cg";
@@ -25,7 +25,7 @@ function MoviesPage() {
           ))}
         </div>
         {/* Loading More */}
-        <div className="w-full flex-colo md:my-20 my-10">
+        <div className="w-full flex-colo md:my-20 my-10" data-aos = "fade-up" data-aos-duration = "1500">
           <button
             onClick={HandleLoadingMore}
             className="flex-rows gap-3 text-white py-3 px-8 rounded font-semibold border-2 border-subMain"
