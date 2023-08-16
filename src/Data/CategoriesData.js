@@ -4,7 +4,7 @@ export const CategoriesData = [
       title: "Romantic",
     },
     {
-      id: "2",
+      _id: "2",
       title: "Action",
     },
     {

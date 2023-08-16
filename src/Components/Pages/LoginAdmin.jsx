@@ -35,7 +35,7 @@ const LoginAdmin = () => {
   const handleDelete = async () => {
     setError("");
     try {
-      navigate("/*");
+      navigate("/");
     } catch (error) {
       console.log(error);
       setError(error.message);

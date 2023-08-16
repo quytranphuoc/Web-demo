@@ -9,6 +9,7 @@ import Layout from "../Layout";
 import { BsCollectionFill } from "react-icons/bs";
 import Movie from "../layout/Movies/Movie";
 import ShareMovieModal from "../layout/components/Modals/ShareModal";
+import {Link} from "react-router-dom";
 
 function SingleMovie() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -31,9 +32,11 @@ function SingleMovie() {
         <div className="my-16">
           <Titles title="Related Movies" Icon={BsCollectionFill} />
           <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-2 gap-6">
+            <Link to={`/movie/${movie?.title}`}>
             {RelatedMovies.map((movie, index) => (
               <Movie key={index} movie={movie} />
             ))}
+            </Link>
           </div>
         </div>
       </div>

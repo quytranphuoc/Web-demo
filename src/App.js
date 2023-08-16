@@ -19,9 +19,12 @@ import LoginAdmin from "./Components/Pages/LoginAdmin";
 import Dashboard_Admin from "./features/Admin/AdminPage/Dashboard_Admin";
 import HomePageAdmin from "./Components/Pages/HomePageAdmin";
 import AboutPage from "./Components/Pages/AboutPage";
-import SideBarAdmin from "./features/Admin/AdminPage/Dashboard/SideBarAdmin";
 import Dashboard from "./features/Admin/AdminPage/Dashboard/Dashborad";
 import AddMovie from "./features/Admin/AdminPage/Dashboard/AddMovie";
+import MovieList from "./features/Admin/AdminPage/Dashboard/MovieList";
+import Categories from "./features/Admin/AdminPage/Dashboard/Categories";
+import Users from "./features/Admin/AdminPage/Dashboard/Users";
+import FavoritesMovies from "./features/Admin/AdminPage/Dashboard/FavoritesMovies";
 function App() {
   Aos.init();
   return (
@@ -33,7 +36,7 @@ function App() {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactPage />} />
           <Route path="savedshow" element={<SavedShows />} />
-          <Route path="/password" element={<Password />} />
+          <Route path="/account" element={<Password />} />
           <Route path="/movie/:id" element={<SingleMovie />} />
           <Route path="/watch/:id" element={<WatchMovie />} />
           <Route path="/login" element={<Login />} />
@@ -58,20 +61,26 @@ function App() {
           <Route
             path="/*"
             element={
+              // <ProtectedRouteAdmin>
+              //   <Dashboard_Admin />
+              // </ProtectedRouteAdmin>
               <ProtectedRouteAdmin>
-                <Dashboard_Admin />
+                <HomePageAdmin/>
               </ProtectedRouteAdmin>
             }
+        
           />
-          <Route path="/*admin" element={<HomePageAdmin/>}/>
+          <Route path="/*admin" element={<HomePageAdmin />} />
           <Route path="/*movies" element={<MoviesPage />} />
           <Route path="/*about-us" element={<AboutPage />} />
           <Route path="/*contact-us" element={<ContactPage />} />
-         <Route/>
-          <Route path="/admin/dashboard" element={<Dashboard/>}/>
-          <Route path="/admin/movielist"/>
-          <Route path="/admin/addmovie" element={<AddMovie/>}/>
-
+          <Route />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/admin/movieslist" element={<MovieList />} />
+          <Route path="/admin/addmovie" element={<AddMovie />} />
+          <Route path="/admin/categories" element={<Categories />} />
+          <Route path="/admin/users" element={<Users />} />
+          <Route path="/admin/favorites" element={<FavoritesMovies/>}/>
         </Routes>
       </AuthContextProvider>
     </>

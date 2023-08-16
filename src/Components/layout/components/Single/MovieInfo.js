@@ -8,7 +8,7 @@ function MovieInfo({ movie, setModalOpen }) {
   return (
     <div className="w-full xl:h-screen relative text-white">
       <img
-        src={`/images/movie/${movie?.image}`}
+        src={`/images/movie/${movie?.titleImage}`}
         alt={movie.name}
         className="w-full hidden xl:inline-block h-full object-cover"
       />
@@ -59,7 +59,10 @@ function MovieInfo({ movie, setModalOpen }) {
                     to={`/watch/${movie?.name}`}
                     className="bg-dry py-4 hover:bg-subMain transitions border-2 border-subMain rounded-full flex-rows gap-4 w-full sm:py-3"
                   >
-                   <button> <FaPlay className="w-3 h-3" /> Watch</button>
+                    <button>
+                      {" "}
+                      <FaPlay className="w-3 h-3" /> Watch
+                    </button>
                   </Link>
                 </div>
               </div>

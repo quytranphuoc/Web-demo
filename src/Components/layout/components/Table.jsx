@@ -1,173 +1,176 @@
-import React, { useState } from "react";
-import { Form, Input, InputNumber, Popconfirm, Table, Typography } from "antd";
-const originData = ({movie,}) => {
-  for (let i = 0; i < 100; i++) {
-    originData.push({
-      key: i.toString(),
-      Image: `/images/movies/${movie.titleImage}`,
-      name: `Edward ${i}`,
-      age: 32,
-      address: `London Park no. ${i}`,
-    });
-  }
-};
-const EditableCell = ({
-  editing,
-  dataIndex,
-  title,
-  inputType,
-  record,
-  index,
-  children,
-  ...restProps
-}) => {
-  const inputNode = inputType === "number" ? <InputNumber /> : <Input />;
+// import React, { useState } from "react";
+// import { AiTwotoneEdit } from "react-icons/ai";
+// import { MdOutlineDeleteOutline } from "react-icons/md";
+// function Table({ data, admin }) {
+//   const [isEditing, setIsEditing] = useState(false);
+//   const [editing, setEditing] = useState(null);
+//   const columns = (movie)=> [
+//     {
+//       key: "1",
+//       title: "Image",
+//       dataIndex:(movie.img),
+//     },
+//     {
+//       key: "2",
+//       title: "Name",
+//       dataIndex: (movie.name),
+//     },
+//     {
+//       key: "3",
+//       title: "Category",
+//       dataIndex: (movie.category),
+//     },
+//     {
+//       key: "4",
+//       title: "Language",
+//       dataIndex: (movie.language),
+//     },
+//     {
+//       key: "5",
+//       title: "Year",
+//       dataIndex: (movie.year),
+//     },
+//     {
+//       key: "6",
+//       title: "Hours",
+//       dataIndex: (movie.time),
+//     },
+//     {
+//       key: "7",
+//       title: "Actions",
+//       render: (record) => {
+//         return (
+//           <>
+//             <div className="flex p-5">
+//               <AiTwotoneEdit
+//                 size={20}
+//                 onClick={() => {
+//                   onEdit(record);
+//                 }}
+//               />
+//               <MdOutlineDeleteOutline size={20} />
+//             </div>
+//           </>
+//         );
+//       },
+//     },
+//   ];
+
+//   const onEdit = (record) => {
+//     setIsEditing(true);
+//     setEditing({ ...record });
+
+//   };
+//   const Rows = ({movie, i, admin}) => {
+//     return ()
+//   }
+//   return (
+//     <div>
+//     <Table>
+//       colu
+//     </Table>
+//       <tbody className="bg-main divide-y divide-gray-800">
+//         {data.map((movie, i) => columns(movie, i, admin))};
+//       </tbody>
+//     </div>
+//   );
+// }
+
+// export default Table;
+
+import React from "react";
+import { FaCloudDownloadAlt, FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { GoEye } from "react-icons/go";
+
+const Head = "text-xs text-left text-main font-semibold px-6 py-2 uppercase";
+const Text =
+  "text-white text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
+
+// rows
+const Rows = (movie, i, admin) => {
   return (
-    <td {...restProps}>
-      {editing ? (
-        <Form.Item
-          name={dataIndex}
-          style={{
-            margin: 0,
-          }}
-          rules={[
-            {
-              required: true,
-              message: `Please Input ${title}!`,
-            },
-          ]}
-        >
-          {inputNode}
-        </Form.Item>
-      ) : (
-        children
-      )}
-    </td>
-  );
-};
-const Table_dashboard = ({movie}) => {
-  const [form] = Form.useForm();
-  const [data, setData] = useState(originData);
-  const [editingKey, setEditingKey] = useState("");
-  const isEditing = (record) => record.key === editingKey;
-  const edit = (record) => {
-    form.setFieldsValue({
-      name: "",
-      age: "",
-      address: "",
-      ...record,
-    });
-    setEditingKey(record.key);
-  };
-  const cancel = () => {
-    setEditingKey("");
-  };
-  const save = async (key) => {
-    try {
-      const row = await form.validateFields();
-      const newData = [...data];
-      const index = newData.findIndex((item) => key === item.key);
-      if (index > -1) {
-        const item = newData[index];
-        newData.splice(index, 1, {
-          ...item,
-          ...row,
-        });
-        setData(newData);
-        setEditingKey("");
-      } else {
-        newData.push(row);
-        setData(newData);
-        setEditingKey("");
-      }
-    } catch (errInfo) {
-      console.log("Validate Failed:", errInfo);
-    }
-  };
-  const columns = [
-    {
-      Image: "image",
-      title: "name",
-      dataIndex: "name",
-      width: "25%",
-      editable: true,
-    },
-    {
-      Image: "image",
-      title: "age",
-      dataIndex: "age",
-      width: "15%",
-      editable: true,
-    },
-    {
-      Image: "image",
-      title: "address",
-      dataIndex: "address",
-      width: "40%",
-      editable: true,
-    },
-    {
-      title: "operation",
-      dataIndex: "operation",
-      render: (_, record) => {
-        const editable = isEditing(record);
-        return editable ? (
-          <span>
-            <Typography.Link
-              onClick={() => save(record.key)}
-              style={{
-                marginRight: 8,
-              }}
-            >
-              Save
-            </Typography.Link>
-            <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
-              <a>Cancel</a>
-            </Popconfirm>
-          </span>
+    <tr key={i}>
+      <td className={`${Text}`}>
+        <div className="w-12 p-1 bg-dry border border-border h-12 rounded overflow-hidden">
+          <img
+            className="h-full w-full object-cover"
+            src={`/images/movie/${movie.titleImage}`}
+            alt={movie?.title}
+          />
+        </div>
+      </td>
+      <td className={`${Text} truncate`}>{movie.title}</td>
+      <td className={`${Text}`}>{movie.category}</td>
+      <td className={`${Text}`}>{movie.language}</td>
+      <td className={`${Text}`}>{movie.year}</td>
+      <td className={`${Text}`}>{movie.time}</td>
+      <td className={`${Text} float-right flex-rows gap-2`}>
+        {admin ? (
+          <>
+            <button className="border border-border bg-dry flex-rows gap-2 text-white rounded py-1 px-2">
+              Edit <FaEdit className="text-green-500" />
+            </button>
+            <button className="border border-border bg-dry flex-rows gap-2 text-white rounded py-1 px-2">
+              Delete
+              <MdDelete />
+            </button>
+          </>
         ) : (
-          <Typography.Link
-            disabled={editingKey !== ""}
-            onClick={() => edit(record)}
-          >
-            Edit
-          </Typography.Link>
-        );
-      },
-    },
-  ];
-  const mergedColumns = columns.map((col) => {
-    if (!col.editable) {
-      return col;
-    }
-    return {
-      ...col,
-      onCell: (record) => ({
-        record,
-        inputType: col.dataIndex === "age" ? "number" : "text",
-        dataIndex: col.dataIndex,
-        title: col.title,
-        editing: isEditing(record),
-      }),
-    };
-  });
-  return (
-    <Form form={form} component={false}>
-      <Table
-        components={{
-          body: {
-            cell: EditableCell,
-          },
-        }}
-        bordered
-        dataSource={data}
-        columns={mergedColumns}
-        rowClassName="editable-row"
-        pagination={{
-          onChange: cancel,
-        }}
-      />
-    </Form>
+          <>
+            <button className="border border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2">
+              Download <FaCloudDownloadAlt className="text-green-500" />
+            </button>
+            <Link
+              to={`/movie/${movie?.title}`}
+              className="bg-subMain text-white rounded flex-colo w-6 h-6"
+            >
+              <GoEye />
+            </Link>
+          </>
+        )}
+      </td>
+    </tr>
   );
 };
-export default Table_dashboard;
+
+// table
+function Table({ data, admin }) {
+  return (
+    <div className="overflow-x-scroll overflow-hidden relative w-full">
+      <table className="w-full table-auto border border-border divide-y divide-border">
+        <thead>
+          <tr className="bg-dryGray">
+            <th scope="col" className={`${Head}`}>
+              Image
+            </th>
+            <th scope="col" className={`${Head}`}>
+              Name
+            </th>
+            <th scope="col" className={`${Head}`}>
+              Category
+            </th>
+            <th scope="col" className={`${Head}`}>
+              Language
+            </th>
+            <th scope="col" className={`${Head}`}>
+              Year
+            </th>
+            <th scope="col" className={`${Head}`}>
+              Hours
+            </th>
+            <th scope="col" className={`${Head} text-center`}>
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody className="bg-main divide-y divide-gray-800">
+          {data.map((movie, i) => Rows(movie, i, admin))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default Table;

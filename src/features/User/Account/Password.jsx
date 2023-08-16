@@ -42,6 +42,7 @@ import React, { useState } from "react";
 import SideBar from "./SideBar";
 import { getAuth, updatePassword, reauthenticateWithCredential, EmailAuthProvider, sendPasswordResetEmail} from "firebase/auth";
 import { Form, Input } from "antd";
+import Layout from "../../../Components/Layout";
 
 function Password() {
   // const [email, setEmail] = useState("");
@@ -67,7 +68,8 @@ function Password() {
   // const newPassword = 
   // await updatePassword(auth.currentUser, newPassword);
   return (
-    <SideBar>
+    <Layout>
+      <SideBar>
       <div className="flex flex-col gap-6">
         <h2 className="text-white">Change password</h2>
         <div className="">
@@ -96,6 +98,7 @@ function Password() {
         </div>
       </div>
     </SideBar>
+    </Layout>
   );
 }
 

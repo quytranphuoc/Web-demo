@@ -16,7 +16,7 @@ function SideBar({ children }) {
     },
     {
       name: "Change Password",
-      link: "/password",
+      link: "/account",
       icon: RiLockPasswordLine,
     },
   ];

@@ -12,6 +12,7 @@ import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { ImUpload } from "react-icons/im";
 import CastsModal from "../../../../Components/layout/components/Modals/CastsModal";
+import LayoutAdmin from "../../../../Components/LayoutAdmin";
 
 function AddMovie() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,7 +25,8 @@ function AddMovie() {
   }, [modalOpen]);
 
   return (
-    <SideBarAdmin>
+    <LayoutAdmin>
+      <SideBarAdmin>
       <CastsModal
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
@@ -149,6 +151,7 @@ function AddMovie() {
         </button>
       </div>
     </SideBarAdmin>
+    </LayoutAdmin>
   );
 }
 
