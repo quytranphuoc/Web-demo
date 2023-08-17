@@ -25,6 +25,8 @@ import MovieList from "./features/Admin/AdminPage/Dashboard/MovieList";
 import Categories from "./features/Admin/AdminPage/Dashboard/Categories";
 import Users from "./features/Admin/AdminPage/Dashboard/Users";
 import FavoritesMovies from "./features/Admin/AdminPage/Dashboard/FavoritesMovies";
+import UpdateProfile from "./features/Admin/AdminPage/Dashboard/UpdateProfile";
+import ChangePassword from "./features/Admin/AdminPage/Dashboard/ChangePassword";
 function App() {
   Aos.init();
   return (
@@ -81,6 +83,8 @@ function App() {
           <Route path="/admin/categories" element={<Categories />} />
           <Route path="/admin/users" element={<Users />} />
           <Route path="/admin/favorites" element={<FavoritesMovies/>}/>
+          <Route path="/admin/profile" element={<UpdateProfile/>}/>
+          <Route path="/admin/password" element={<ChangePassword/>}/>
         </Routes>
       </AuthContextProvider>
     </>

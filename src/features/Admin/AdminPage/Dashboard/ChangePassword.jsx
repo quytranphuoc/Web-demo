@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Layout from "../../../Components/Layout";
-import SideBar from "./SideBar";
+import LayoutAdmin from "../../../../Components/LayoutAdmin";
+import SideBarAdmin from "./SideBarAdmin";
 import { Form, Space, Input,Button } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-import { sendPasswordResetEmail, getAuth } from "firebase/auth";
+import { sendPasswordResetEmail, getAuth, updatePassword, reauthenticateWithCredential } from "firebase/auth";
 
-function Password() {
+function ChangePassword() {
   const [passwordVisible, setPasswordVisible] = React.useState(false);
   const [email, setEmail] = useState("");
   const auth = getAuth();
@@ -23,16 +23,16 @@ function Password() {
         await sendPasswordResetEmail(auth, email);
         console.log("Password reset email sent")
     }
+    
+    // Reauthenticate the user with the old password
   return (
-    <Layout>
-      <SideBar className="">
+    <LayoutAdmin>
+      <SideBarAdmin className="">
         <div className="flex flex-col gap-6">
           <h2 className="text-white">Change Password</h2>
           <Form onSubmit={sendPasswordResetEmail} className="gap-6">
             <Input
-              label="Previous Password"
-              placeholder="Password"
-              type="password"
+              placeholder="Email" type="email" value={email} onChange={e => setEmail(e.target.value)}
               bg={true}
             />
             <Input.Password
@@ -41,6 +41,7 @@ function Password() {
               iconRender={(visible) =>
                 visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
               }
+              onChange={e => setPasswordVisible(e.target.value)}
             />
             <Input.Password
               label="Confirm Password"
@@ -55,9 +56,9 @@ function Password() {
           </div>
           </Form>
         </div>
-      </SideBar>
-    </Layout>
+      </SideBarAdmin>
+    </LayoutAdmin>
   );
 }
 
-export default Password;
+export default ChangePassword;
