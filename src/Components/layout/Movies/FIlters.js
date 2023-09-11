@@ -22,11 +22,9 @@ const TimesData = [
 
 const RatesData = [
   { title: "Sort By Rates" },
-  { title: "1 Star" },
-  { title: "2 Star" },
-  { title: "3 Star" },
-  { title: "4 Star" },
-  { title: "5 Star" },
+  { title: "Highest" },
+  { title: "Lowest" },
+ 
 ];
 
 function Filters() {

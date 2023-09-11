@@ -6,7 +6,10 @@ import { updateDoc, doc, onSnapshot } from "firebase/firestore";
 import { AiOutlineClose } from "react-icons/ai";
 import { TbHomeHeart } from "react-icons/tb";
 import Layout from "../../../Components/Layout";
-
+import SideBar from "./SideBar";
+import { Movies } from "../../../Data/MovieData";
+import Tables from "../../../Components/layout/components/Tables";
+import Titles from "../../../Components/layout/components/Titles";
 const SavedShows = ({ movie }) => {
   const [movies, setMovies] = useState([]);
   const { user } = UserAuth();
@@ -40,62 +43,64 @@ const SavedShows = ({ movie }) => {
 
   return (
     <Layout>
-      <div className="bg-black border border-dry">
-        <img
-          className="w-full h-[400px] object-cover"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/f841d4c7-10e1-40af-bcae-07a3f8dc141a/f6d7434e-d6de-4185-a6d4-c77a2d08737b/US-en-20220502-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
-          alt="/"
-        />
-        <h2 className="flex text-white font-bold md:text-xl p-4 bg-gradient-to-r from-[var(--primary-purple)] to-[var(--primary-orange)]">
+      <SideBar>
+        <div>
+          {/* <h2 className="flex text-white font-bold md:text-xl p-4 bg-gradient-to-r from-[var(--primary-purple)] to-[var(--primary-orange)]">
           <TbHomeHeart />
-          My Shows
-        </h2>
-        <div className="border border-spacing-5 bg-transparent border-900 ">
-          <div className="relative flex items-center group">
-            <MdChevronLeft
-              onClick={slideLeft}
-              className="bg-white left-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
-              size={40}
-            />
-            <div
-              id={"slider"}
-              className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative"
-            >
-              {movies.map((item) => (
+        SavedShows
+        </h2> */}
+          <div className="bg-gradient-to-r from-[var(--primary-purple)] to-[var(--primary-orange)] text-white py-3 rounded-sm">
+            {" "}
+            <Titles title="Favorites Movies" Icon={TbHomeHeart} />
+          </div>
+          <div className=" bg-transparent ">
+            {/* <div className="relative flex items-center group">
+                <MdChevronLeft
+                  onClick={slideLeft}
+                  className="bg-white left-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
+                  size={40}
+                />
                 <div
-                  key={item.id}
-                  className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 bg-subMain"
+                  id={"slider"}
+                  className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative"
                 >
-                  <div>
-                    <img
-                      className="w-full h-auto block flex-btn border border-red-400"
-                      src={`https://image.tmdb.org/t/p/w500/${item?.img}`}
-                      alt={item?.title}
-                    />
-                  </div>
-                  <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white">
-                    <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
-                      {item?.title}
-                    </p>
-                    <p
-                      onClick={() => deleteShow(item.id)}
-                      className="absolute text-gray-300 top-4 right-4"
+                  {movies.map((item) => (
+                    <div
+                      key={item.id}
+                      className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block cursor-pointer relative p-2 bg-subMain"
                     >
-                      <AiOutlineClose />
-                    </p>
-                  </div>
+                      <div>
+                        <img
+                          className="w-full h-auto block flex-btn border border-red-400"
+                          src={`https://image.tmdb.org/t/p/w500/${item?.img}`}
+                          alt={item?.title}
+                        />
+                      </div>
+                      <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white">
+                        <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
+                          {item?.title}
+                        </p>
+                        <p
+                          onClick={() => deleteShow(item.id)}
+                          className="absolute text-gray-300 top-4 right-4"
+                        >
+                          <AiOutlineClose />
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
 
-            <MdChevronRight
-              onClick={slideRight}
-              className="bg-white right-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
-              size={40}
-            />
+                <MdChevronRight
+                  onClick={slideRight}
+                  className="bg-white right-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
+                  size={40}
+                />
+              </div> */}
+            <Tables />
           </div>
         </div>
-      </div>
+      </SideBar>
     </Layout>
   );
 };

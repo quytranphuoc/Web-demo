@@ -9,16 +9,16 @@ import Layout from "../Layout";
 import { BsCollectionFill } from "react-icons/bs";
 import Movie from "../layout/Movies/Movie";
 import ShareMovieModal from "../layout/components/Modals/ShareModal";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import LayoutAdmin from "../LayoutAdmin";
 
-function SingleMovie() {
+function SingleMovieAdmin() {
   const [modalOpen, setModalOpen] = useState(false);
   const { id } = useParams();
   const movie = Movies.find((movie) => movie.title === id);
-
   const RelatedMovies = Movies.filter((m) => m.category === movie.category);
   return (
-    <Layout>
+    <LayoutAdmin>
       <ShareMovieModal
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
@@ -34,15 +34,15 @@ function SingleMovie() {
           <Titles title="Related Movies" Icon={BsCollectionFill} />
           <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-2 gap-6">
             <Link to={`/movie/${movie?.title}`}>
-              {RelatedMovies.map((movie, index) => (
-                <Movie key={index} movie={movie} />
-              ))}
+            {RelatedMovies.map((movie, index) => (
+              <Movie key={index} movie={movie} />
+            ))}
             </Link>
           </div>
         </div>
       </div>
-    </Layout>
+    </LayoutAdmin>
   );
 }
 
-export default SingleMovie;
+export default SingleMovieAdmin;

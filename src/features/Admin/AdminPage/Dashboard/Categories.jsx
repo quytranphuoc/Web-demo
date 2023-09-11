@@ -33,7 +33,7 @@ function Categories() {
           <h2>Categories</h2>
           <button
             onClick={() => setModalOpen(true)}
-            className="bg-subMain flex-rows gap-4 font-medium transitions hover:bg-main border border-subMain text-white py-2 px-4 rounded"
+            className=" flex-rows gap-4 font-medium transitions hover:bg-main   text-white py-2 px-4 rounded"
           >
             <HiPlusCircle /> Create
           </button>

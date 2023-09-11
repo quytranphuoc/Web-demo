@@ -10,7 +10,7 @@ import { setDoc, doc } from "firebase/firestore";
 
 const AuthContext = createContext();
 
-export function AuthContextProvider({ children}) {
+export function AuthContextProvider({ children }) {
   const [user, setUser] = useState({});
   function signUp(email, password) {
     createUserWithEmailAndPassword(auth, email, password);
@@ -42,7 +42,6 @@ export function AuthContextProvider({ children}) {
     </AuthContext.Provider>
   );
 }
-
 export function UserAuth() {
   return useContext(AuthContext);
 }

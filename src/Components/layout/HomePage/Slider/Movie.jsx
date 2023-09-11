@@ -3,8 +3,9 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { UserAuth } from "../../../../features/Auth/AuthContext";
 import { db } from "../../../../firebase";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import {Link} from "react-router-dom";
 
-const Movie = ({ item }) => {
+const Movie = ({ item , handleShowModal}) => {
   const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
   const { user } = UserAuth();
@@ -23,7 +24,7 @@ const Movie = ({ item }) => {
         }),
       });
     } else {
-      alert("Please log in to save a movie");
+     //
     }
   };
 
@@ -35,9 +36,11 @@ const Movie = ({ item }) => {
         alt={item?.title}
       />
       <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white">
+        <Link>
         <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
           {item?.title}
         </p>
+        </Link>
         <p onClick={saveShow}>
           {like ? (
             <FaHeart className="absolute top-4 left-4 text-gray-300" />

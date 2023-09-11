@@ -4,7 +4,7 @@ import { FiUser } from "react-icons/fi";
 
 const Content = () => {
   return (
-    <Layout className="bg-black">
+    <Layout className="bg-dry">
       <div
         className="my-20 py-10 md:px-20 px-8 border flex border-4 border-red-600 bottom-1 bg-purple-500 bg-opacity-80 shadow-lime-100 rounded-s-full"
         data-aos="fade-left"

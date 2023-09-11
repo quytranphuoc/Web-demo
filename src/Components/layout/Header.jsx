@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import HeroImg from "../../assets/logo.webp";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { FaRegUserCircle } from "react-icons/fa";
+import { BiSolidUserCircle } from "react-icons/bi";
 import { UserAuth } from "../../features/Auth/AuthContext";
 const Header = () => {
   const { user, logOut } = UserAuth();
@@ -23,16 +23,18 @@ const Header = () => {
     }
   };
   return (
-    <div className="w-full h-[90px] bg-purple-500 bg-opacity-80">
-      <div className="flex items-center justify-between p-4 z-[100] w-full absolute">
+    <nav className="sticky w-full h-[90px] bg-main">
+      <div className="w-full flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/">
-          <img src={HeroImg} alt="logo" className="w-20" size="40" />
+          <img src={HeroImg} alt="logo" className="w-20" size="50" />
         </Link>
+
+       
         {/* Account */}
         {user?.email ? (
           <div>
-            <div className="flex flex-wrap items-center justify-center ">
-              <ul className="flex text-white items-center">
+            <div className="hidden w-full md:block md:w-auto ">
+              <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 b md:flex-row md:space-x-8 md:mt-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <NavLink to="/movies" className={Hover}>
                   <li>Movie</li>
                 </NavLink>
@@ -43,15 +45,20 @@ const Header = () => {
                   <li>Contact Us</li>
                 </NavLink>
                 <NavLink to="/account">
-                  <div className="text-blue-600 text-center items-end hover:text-subMain hover:scale-110 ">
-                    <FaRegUserCircle
+                  <div className="text-white text-center items-end hover:text-subMain hover:scale-110 ">
+                    <BiSolidUserCircle
                       className="flex flex-wrap items-center justify-center w-full"
-                      size={30}
+                      size={50}
                     />
-                    Account
+                    {/* Account */}
                   </div>
                 </NavLink>
-                <button onClick={handleLogout} className="hover:shadow-md hover:scale-110">LogOut</button>
+                <button
+                  onClick={handleLogout}
+                  className="text-white hover:shadow-md hover:scale-110"
+                >
+                  LogOut
+                </button>
               </ul>
             </div>
             <div onClick={handleNav} className="block md:hidden">
@@ -86,17 +93,17 @@ const Header = () => {
         ) : (
           <div>
             <div className="hidden md:flex">
-              <ul className="flex text-white items-center">
+              <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 b md:flex-row md:space-x-8 md:mt-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <NavLink to="/about-us" className={Hover}>
                   <li>About Us</li>
                 </NavLink>
                 <NavLink to="/contact-us" className={Hover}>
                   <li>Contact Us</li>
                 </NavLink>
-                <NavLink to="/login">
+                <NavLink to="/login" className="text-white">
                   <button>Sign In</button>
                 </NavLink>
-                <NavLink to="/signup">
+                <NavLink to="/signup" className="text-white">
                   <button>Sign Up</button>
                 </NavLink>
                 {/* <NavLink to="/dashboard">
@@ -136,7 +143,7 @@ const Header = () => {
           </div>
         )}
       </div>
-    </div>
+    </nav>
   );
 };
 

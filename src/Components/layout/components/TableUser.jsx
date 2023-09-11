@@ -10,8 +10,12 @@ import {
   Pagination,
 } from "antd";
 import { CategoriesData } from "../../../Data/CategoriesData";
+import { UsersData } from "../../../Data/MovieData";
+import {FaUserAstronaut} from "react-icons/fa";
+const initialData = [];
 
-const Tables = () => {
+const Tables = (data) => {
+  const [, setData] = useState(initialData);
   const [modalVisible, setModalVisible] = useState(false);
   const [editingUser, setEditingUser] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,9 +23,29 @@ const Tables = () => {
   const [form] = Form.useForm();
 
   const columns = [
-    { title: "ID", dataIndex: "_id" },
+    {
+      title: "IMAGE",
+      // dataIndex: "image",
+      key: "icon",
+      render: (icon) => (
+        <FaUserAstronaut icon={icon} size={40}/>
+      )
+      // render: (data) => (
+      //   <img
+      //     src={`/images/${data.image ? data.image : "user.png"} `}
+      //     alt="Avatar"
+      //     width={50}
+      //   />
+      // ),
+     
+    },
+    { title: "ID", dataIndex: "id" },
+
     { title: "DATE", dataIndex: "date" },
-    { title: "TITLE", dataIndex: "title" },
+
+    { title: "FULL NAME", dataIndex: "fullName" },
+    { title: "EMAIL", dataIndex: "email" },
+
     {
       title: "Action",
       dataIndex: "action",
@@ -42,13 +66,10 @@ const Tables = () => {
       ),
     },
   ];
-
-  // Filter data based on pagination
-  const filteredData = CategoriesData.slice(
+  const filteredData = UsersData.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
   );
-
   const showModal = () => {
     form.resetFields();
     setEditingUser(null);
@@ -58,17 +79,16 @@ const Tables = () => {
   const handleOk = () => {
     form.validateFields().then((values) => {
       if (editingUser) {
-        // Update the edited user in the filteredData
-        const updatedData = filteredData.map((user) =>
-          user._id === editingUser._id ? { ...user, title: values.title } : user
+        const updatedData = UsersData.map((user) =>
+          user.id === editingUser.id ? { ...user, name: values.name } : user
         );
+
         message.success("User updated successfully");
       } else {
-        // Add a new user to the filteredData
         const newUser = {
-          _id: CategoriesData.length + 1,
-          title: values.title,
-          date: values.date,
+          id: data.length + 1,
+          name: values.name,
+          email: values.email,
         };
         filteredData.push(newUser);
         message.success("User added successfully");
@@ -82,7 +102,8 @@ const Tables = () => {
   };
 
   const editUser = (user) => {
-    form.setFieldsValue({ title: user.title, date: user.date });
+    form.setFieldsValue({ Date: user.date });
+    form.setFieldsValue({ Tilte: user.title });
     setEditingUser(user);
     setModalVisible(true);
   };
@@ -92,7 +113,8 @@ const Tables = () => {
       title: "Confirm",
       content: `Are you sure you want to delete user "${user.title}"?`,
       onOk: () => {
-        const updatedData = filteredData.filter((u) => u._id !== user._id);
+        const filteredData = data.filter((u) => u.id !== user.id);
+        setData(filteredData);
         message.success("User deleted successfully");
       },
     });
@@ -110,19 +132,19 @@ const Tables = () => {
       return <span className=" text-white hover:text-red-400">Previous</span>;
     }
     if (type === "next") {
-      return <span className=" text-white hover:tex">Next</span>;
+      return <span className=" text-white hover:text-red-400">Next</span>;
     }
     return originalElement;
   };
   return (
     <div>
       <Table
-        dataSource={filteredData}
+        dataSource={UsersData}
         columns={columns}
-        rowKey="_id"
+        rowKey="id"
         pagination={false}
       />
-      <div style={{ textAlign: "right", textAlignLast:"auto"}}>
+      <div style={{ textAlign: "right", textAlignLast: "auto" }}>
         <Pagination
           className="item-center, border-collapse"
           current={currentPage}
@@ -135,7 +157,6 @@ const Tables = () => {
           itemRender={customItemRender}
         />
       </div>
-
       <Modal
         title={editingUser ? "Edit User" : "Add User"}
         visible={modalVisible}
@@ -146,17 +167,33 @@ const Tables = () => {
           <Form.Item
             label="Title"
             name="title"
-            rules={[{ required: true, message: "Please enter title" }]}
+            rules={[{ required: true, message: "Please enter name" }]}
           >
             <Input />
+
+            <Form.Item
+              label="Date"
+              name="date"
+              rules={[
+                { required: true, message: "Please enter email" },
+                { type: "date", message: "Please enter a valid email" },
+              ]}
+            >
+              <Input />
+            </Form.Item>
           </Form.Item>
-          <Form.Item
-            label="Date"
-            name="date"
-            rules={[{ required: true, message: "Please enter date" }]}
-          >
-            <Input />
-          </Form.Item>
+          {!editingUser && (
+            <Form.Item
+              label="Date"
+              name="date"
+              rules={[
+                { required: true, message: "Please enter email" },
+                { type: "date", message: "Please enter a valid email" },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+          )}
         </Form>
       </Modal>
     </div>

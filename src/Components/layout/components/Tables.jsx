@@ -9,9 +9,12 @@ import {
   Space,
   Pagination,
 } from "antd";
-import { CategoriesData } from "../../../Data/CategoriesData";
+import { Movies } from "../../../Data/MovieData";
 
-const Tables = () => {
+const initialData = [];
+
+const Tables = (movie) => {
+  const [data, setData] = useState(initialData);
   const [modalVisible, setModalVisible] = useState(false);
   const [editingUser, setEditingUser] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,12 +22,16 @@ const Tables = () => {
   const [form] = Form.useForm();
 
   const columns = [
-    { title: "ID", dataIndex: "_id" },
-    { title: "DATE", dataIndex: "date" },
-    { title: "TITLE", dataIndex: "title" },
+    { title: "ID", dataIndex: "id" },
+    { title: "Name", dataIndex: "name" },
+    { title: "Category", dataIndex: "category" },
+    { title: "Language", dataIndex: "language" },
+    { title: "Year", dataIndex: "year" },
+    { title: "Hours", dataIndex: "time" },
     {
       title: "Action",
       dataIndex: "action",
+      className: "item-center",
       render: (_, record) => (
         <Space>
           <Button className="edit" type="link" onClick={() => editUser(record)}>
@@ -42,9 +49,7 @@ const Tables = () => {
       ),
     },
   ];
-
-  // Filter data based on pagination
-  const filteredData = CategoriesData.slice(
+  const filteredData = Movies.slice(
     (currentPage - 1) * pageSize,
     currentPage * pageSize
   );
@@ -58,19 +63,18 @@ const Tables = () => {
   const handleOk = () => {
     form.validateFields().then((values) => {
       if (editingUser) {
-        // Update the edited user in the filteredData
-        const updatedData = filteredData.map((user) =>
-          user._id === editingUser._id ? { ...user, title: values.title } : user
+        const updatedData = Movies.map((user) =>
+          user.id === editingUser.id ? { ...user, name: values.name } : user
         );
+        setData(updatedData);
         message.success("User updated successfully");
       } else {
-        // Add a new user to the filteredData
         const newUser = {
-          _id: CategoriesData.length + 1,
-          title: values.title,
-          date: values.date,
+          id: Movies.length + 1,
+          name: values.name,
+          email: values.email,
         };
-        filteredData.push(newUser);
+        filteredData.push([newUser]);
         message.success("User added successfully");
       }
       setModalVisible(false);
@@ -82,7 +86,7 @@ const Tables = () => {
   };
 
   const editUser = (user) => {
-    form.setFieldsValue({ title: user.title, date: user.date });
+    form.setFieldsValue({ name: user.name });
     setEditingUser(user);
     setModalVisible(true);
   };
@@ -90,9 +94,10 @@ const Tables = () => {
   const deleteUser = (user) => {
     Modal.confirm({
       title: "Confirm",
-      content: `Are you sure you want to delete user "${user.title}"?`,
+      content: `Are you sure you want to delete user "${user.name}"?`,
       onOk: () => {
-        const updatedData = filteredData.filter((u) => u._id !== user._id);
+        const updatedData = filteredData.filter((u) => u.id !== user.id);
+       
         message.success("User deleted successfully");
       },
     });
@@ -110,24 +115,27 @@ const Tables = () => {
       return <span className=" text-white hover:text-red-400">Previous</span>;
     }
     if (type === "next") {
-      return <span className=" text-white hover:tex">Next</span>;
+      return <span className=" text-white hover:text-red-400">Next</span>;
     }
     return originalElement;
   };
   return (
-    <div>
+    <div className="text-black">
+      {/* <button type="primary" onClick={showModal} className=''>
+        Add User
+      </button> */}
       <Table
         dataSource={filteredData}
         columns={columns}
-        rowKey="_id"
+        rowKey="id"
         pagination={false}
       />
-      <div style={{ textAlign: "right", textAlignLast:"auto"}}>
+      <div style={{ textAlign: "right", textAlignLast: "auto" }}>
         <Pagination
           className="item-center, border-collapse"
           current={currentPage}
           pageSize={pageSize}
-          total={CategoriesData.length}
+          total={Movies.length}
           onChange={handlePageChange}
           onShowSizeChange={handlePageSizeChange}
           showSizeChanger
@@ -135,7 +143,6 @@ const Tables = () => {
           itemRender={customItemRender}
         />
       </div>
-
       <Modal
         title={editingUser ? "Edit User" : "Add User"}
         visible={modalVisible}
@@ -144,19 +151,53 @@ const Tables = () => {
       >
         <Form form={form} layout="vertical">
           <Form.Item
-            label="Title"
-            name="title"
-            rules={[{ required: true, message: "Please enter title" }]}
+            label="Name"
+            name="name"
+            rules={[{ required: true, message: "Please enter name" }]}
           >
             <Input />
           </Form.Item>
           <Form.Item
-            label="Date"
-            name="date"
-            rules={[{ required: true, message: "Please enter date" }]}
+            label="Category"
+            name="category"
+            rules={[{ required: true, message: "Please enter category" }]}
           >
             <Input />
           </Form.Item>
+          <Form.Item
+            label="Language"
+            name="language"
+            rules={[{ required: true, message: "Please enter category" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Year"
+            name="year"
+            rules={[{ required: true, message: "Please enter category" }]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Hour"
+            name="time"
+            rules={[{ required: true, message: "Please enter category" }]}
+          >
+            <Input />
+          </Form.Item>
+
+          {!editingUser && (
+            <Form.Item
+              label="Email"
+              name="email"
+              rules={[
+                { required: true, message: "Please enter email" },
+                { type: "email", message: "Please enter a valid email" },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+          )}
         </Form>
       </Modal>
     </div>

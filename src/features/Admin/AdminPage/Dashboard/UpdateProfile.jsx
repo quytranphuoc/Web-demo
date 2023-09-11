@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from "react";
 import LayoutAdmin from "../../../../Components/LayoutAdmin";
 import SideBarAdmin from "./SideBarAdmin";
-import { Form, Avatar, Popconfirm, Rate, Space, Table, Typography } from "antd";
+import {
+  Form,
+  Avatar,
+  Popconfirm,
+  Rate,
+  Space,
+  Table,
+  Typography,
+  Input,
+} from "antd";
 import { getCustomers } from "../../../../Request";
 import Uploder from "../../../../Components/layout/components/Uploder";
+
 const originData = [];
 function UpdateProfile() {
   const [form] = Form.useForm();
@@ -61,15 +71,13 @@ function UpdateProfile() {
   return (
     <LayoutAdmin>
       <SideBarAdmin>
-        <div className="flex flex-col gap-6 ">
-
-          <Space size={20} direction="vertical"> 
+        {/* <div className="flex flex-col gap-6 ">
+          <Space size={20} direction="vertical">
             <Typography.Title level={4}>
               <span className="text-white">UpdateProfile</span>
             </Typography.Title>
-            <Uploder/>
+            <Uploder />
             <Table
-         
               loading={loading}
               columns={[
                 {
@@ -78,7 +86,6 @@ function UpdateProfile() {
                   render: (link) => {
                     return <Avatar src={link} />;
                   },
-                  
                 },
                 {
                   title: "Name",
@@ -110,7 +117,6 @@ function UpdateProfile() {
                       >
                         <a>Delete</a>
                       </Popconfirm>
-                      
                     ) : null,
                   render: (_, record) => {
                     const editable = isEditing(record);
@@ -128,10 +134,8 @@ function UpdateProfile() {
                         disabled={editingKey !== ""}
                         onClick={() => editable(record)}
                       >
-                       <button>Edit</button>
-                        
+                        <button>Edit</button>
                       </Typography.Link>
-                      
                     );
                   },
                 },
@@ -143,6 +147,34 @@ function UpdateProfile() {
               }}
             ></Table>
           </Space>
+        </div> */}
+
+        <div className="flex flex-col gap-6">
+          <h2 className="text-xl font-bold">Profile</h2>
+          <Uploder />
+          <Input
+            label="FullName"
+            placeholder="Netflixo React Tailwind"
+            type="text"
+            bg={true}
+          />
+          <Input
+            label="Email"
+            placeholder="netflixo@gmail.com"
+            type="email"
+            bg={true}
+          />
+          <div className="flex gap-2 flex-wrap flex-col-reverse sm:flex-row justify-between items-center my-4">
+            <button className="bg-subMain font-medium transitions hover:bg-main  text-white py-3 px-6 rounded w-full sm:w-auto">
+              Delete Account
+            </button>
+            <button className="bg-main font-medium transitions hover:bg-subMain  text-white py-3 px-6 rounded w-full sm:w-auto">
+              Update Profile
+            </button>
+          </div>
+        </div>
+        <div className="">
+          <div className=""></div>
         </div>
       </SideBarAdmin>
     </LayoutAdmin>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { BsCollection } from "react-icons/bs";
-
+import Titles from "../../components/Titles";
 const Row = ({ title, fetchURL, rowID }) => {
   const [movies, setMovies] = useState([]);
 
@@ -24,10 +24,10 @@ const Row = ({ title, fetchURL, rowID }) => {
 
   return (
     <>
-      <div className="bg-purple-400 hover:bg-purple-500">
+      <div className="bg-dry">
         <h2 className="flex text-base font-bold md:text-xl p-4 text-white">
-          <BsCollection />
-          {title}
+          {/* <BsCollection /> {title} */}
+          <Titles title={title} Icon={BsCollection} />
         </h2>
 
         <div className="relative flex items-center group">

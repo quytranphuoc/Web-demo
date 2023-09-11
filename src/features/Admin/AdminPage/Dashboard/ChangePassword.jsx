@@ -1,60 +1,122 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LayoutAdmin from "../../../../Components/LayoutAdmin";
 import SideBarAdmin from "./SideBarAdmin";
-import { Form, Space, Input,Button } from "antd";
+import { Form, Space, Input, Button } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-import { sendPasswordResetEmail, getAuth, updatePassword, reauthenticateWithCredential } from "firebase/auth";
-
+// import { useFirebaseApp, useAuth } from "reactfire";
+// import firebase from "firebase/app";
+// import "firebase/auth";
 function ChangePassword() {
-  const [passwordVisible, setPasswordVisible] = React.useState(false);
-  const [email, setEmail] = useState("");
-  const auth = getAuth();
-  sendPasswordResetEmail(auth, email)
-    .then(() => {
-      alert("Password reset email sent!");
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(`
-    Error sending password reset email: Code: ${errorCode} Message: ${errorMessage}`);
-    });
-    const triggerResetEmail = async () => {
-        await sendPasswordResetEmail(auth, email);
-        console.log("Password reset email sent")
-    }
-    
-    // Reauthenticate the user with the old password
+  // const [oldPassword, setOldPassword] = useState("");
+  // const [newPassword, setNewPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
+  // const [error, setError] = useState(null);
+
+  // useEffect(() => {
+  //   const user = firebase.auth().currentUser;
+  //   if (user) {
+  //     const email = user.email;
+  //     setOldPassword(email);
+  //     setNewPassword("");
+  //     setConfirmPassword("");
+  //   }
+  // }, []);
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   if (oldPassword === "") {
+  //     setError("Please enter your new password.");
+  //   }
+  //   if (newPassword === "") {
+  //     setError("Please enter your new password.");
+  //   }
+  //   if (confirmPassword === "") {
+  //     setError("Please confirm your new password.");
+  //   }
+  //   if (newPassword !== confirmPassword) {
+  //     setError("Your new passwords do not match.");
+  //     return;
+  //   }
+  //   // firebase
+  //   //   .auth()
+  //   //   .ChangePassword(oldPassword, newPassword)
+  //   //   .then(
+  //   //     () => {
+  //   //       setError(null);
+  //   //       setOldPassword("");
+  //   //       setNewPassword("");
+  //   //       setNewPassword("");
+  //   //       setConfirmPassword("");
+  //   //     },
+  //   //     (error) => {
+  //   //       setError(error.message);
+  //   //     }
+  //   //   );
+  //   const user = firebase.auth().currentUser;
+  //   if (user) {
+  //     const credential = firebase.auth.EmailAuthProvider.credential(
+  //       user.email,
+  //       oldPassword
+  //     );
+  //     user
+  //       .reauthenticateWithCredentail(credential)
+  //       .then(() => {
+  //         return user.updatePassword(newPassword);
+  //       })
+  //       .then(() => {
+  //         setError(null);
+  //         setOldPassword("");
+  //         setNewPassword("");
+  //         setError("");
+  //         setConfirmPassword("");
+  //       })
+  //       .catch((error) => {
+  //         setError(error.message);
+  //       });
+  //   }
+  // };
+
+  // Reauthenticate the user with the old password
   return (
     <LayoutAdmin>
       <SideBarAdmin className="">
-        <div className="flex flex-col gap-6">
+        <div className=" flex-col gap-6">
           <h2 className="text-white">Change Password</h2>
-          <Form onSubmit={sendPasswordResetEmail} className="gap-6">
-            <Input
-              placeholder="Email" type="email" value={email} onChange={e => setEmail(e.target.value)}
-              bg={true}
-            />
-            <Input.Password
-            className="my-4"
-              placeholder="input password"
-              iconRender={(visible) =>
-                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-              }
-              onChange={e => setPasswordVisible(e.target.value)}
-            />
-            <Input.Password
-              label="Confirm Password"
-              placeholder="New password"
-              type="password"
-              bg={true}
-            />
-          <div className="flex justify-end items-center my-4">
-          <button className="bg-red" onClick={triggerResetEmail}>
-              Ripristina password
-            </button>
+          <div className="flex justify-center  items-center ">
+            <Form className="p-4 w-2/3  shadow-md justify-center">
+              <Input.Password
+             
+                  className=" p-3 my-2 rounded"
+                  type="password"
+                  placeholder="Password"
+                  autoComplete="password"
+                /><br/>
+                <Input.Password
+                
+                  className="  p-3 my-2 rounded"
+                  type="password"
+                  placeholder="New Password"
+                  autoComplete="current-password"
+                  iconRender={(visible) => visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>}
+                /><br/>
+                <Input.Password
+               
+                  className=" p-3 my-2 rounded"
+                  type="password"
+                  placeholder="Confirm Password"
+                  autoComplete="current-password"
+                iconRender={(visible) => visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>}
+                />
+
+              <div className="flex justify-center items-center my-4">
+                <button className="text-white font-sans ">
+                Ripristina password
+               
+                </button>
+              </div>
+            </Form>
           </div>
-          </Form>
         </div>
       </SideBarAdmin>
     </LayoutAdmin>

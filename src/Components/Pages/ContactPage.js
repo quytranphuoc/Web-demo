@@ -4,6 +4,9 @@ import Head from "../layout/components/Head";
 import Layout from "../Layout";
 import ContactForm from "../layout/Contact/ContactForm";
 function ContactPage() {
+  const phoneNumber = "+774 521 897";
+  const contactdata = "quyt40247@gmail.com";
+  const address = "https://goo.gl/maps/VN1e78fNda2VxkxH6"
   const ContactData = [
     {
       id: 1,
@@ -11,6 +14,7 @@ function ContactPage() {
       info: "Interactively grow backend ideas for cross-platform models.",
       icon: FiMail,
       contact: "quytp@mor.com.vn",
+      link: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox",
     },
     {
       id: 2,
@@ -25,6 +29,7 @@ function ContactPage() {
       info: "Đà Nẵng",
       icon: FiMapPin,
       contact: "",
+
     },
   ];
   return (
@@ -36,27 +41,54 @@ function ContactPage() {
           data-aos="fade-right"
           data-aos-duration="2000"
         >
-          {ContactData.map((item) => (
+          {ContactData.map((item, phoneNumber) => (
             <div
               key={item.id}
               className="border border-border flex-colo p-10 bg-dry rounded-lg text-center"
             >
               <span className="flex-colo w-20 h-20 mb-4 rounded-full bg-main text-subMain ">
-                <h2>
-                  <item.icon />
-                </h2>
+                {/* <a href={item.contact}>
+                  <h2>
+                    <item.icon />
+                  </h2>
+                </a> */}
+
+                {item.contact.includes("@") ? (
+                  <a href={`mailto:${item.contact}`}>
+                  <h2>
+                    <item.icon />
+                  </h2>
+                  </a>
+                ) : (
+                  <a  href={`https://www.google.com/https://goo.gl/maps/VN1e78fNda2VxkxH6/${encodeURIComponent(address)}`}>
+                  <h2>
+                    <item.icon />
+                  </h2>
+                  </a>
+                )}
               </span>
               <h2 className="font-semibold mb-2 text-white">{item.title}</h2>
               <p className="mb-0 text-sm text-text leading-7">
-                <a href={`mailto:${item.contact}`} className="text-blue-600">
+                {/* <a href={`mailto:${item.contact}`} className="text-blue-600">
                   {item.contact}
-                </a>{" "}
+                </a> */}
+
+                <div className="text-blue-700 hover:text-subMain">
+                  {item.contact.includes("@") ? (
+                    <a href={`mailto:${item.contact}`}>{item.contact}</a>
+                  ) : (
+                    <a href={`tel:${phoneNumber}`}>{item.contact}</a>
+                  )}
+                </div>
+
                 {item.info}
               </p>
             </div>
           ))}
         </div>
-        <ContactForm />
+        <div className="bg-black">
+          <ContactForm />
+        </div>
       </div>
     </Layout>
   );

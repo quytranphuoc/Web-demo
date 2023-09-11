@@ -24,16 +24,16 @@ const HeaderAdmin = () => {
     }
   };
   return (
-    <div className="w-full h-[90px] bg-purple-500 bg-opacity-80">
-      <div className="flex items-center justify-between p-4 z-[100] w-full absolute">
+    <div className="w-full h-[90px] bg-main">
+      <div className="w-full flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/*admin">
           <img src={HeroImg} alt="logo" className="w-20" size="40" />
         </Link>
         {/* Account */}
         {user?.email ? (
           <div>
-            <div className="flex flex-wrap items-center justify-center">
-              <ul className="flex text-white items-center">
+            <div className="hidden w-full md:block md:w-auto ">
+              <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 b md:flex-row md:space-x-8 md:mt-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <NavLink to="/*movies" className={Hover}>
                   <li>Movie</li>
                 </NavLink>
@@ -44,15 +44,15 @@ const HeaderAdmin = () => {
                   <li>Contact Us</li>
                 </NavLink>
                 <NavLink to="/dashboard">
-                  <div className="text-blue-600 text-center items-end hover:text-subMain hover:scale-110">
+                  <div className="text-white text-center items-end hover:text-subMain hover:scale-110">
                     <MdAdminPanelSettings
                       className="flex flex-wrap items-center justify-center w-full hover:text-subMain"
-                      size={30}
+                      size={50}
                     />
-                    Dashboard
+             
                   </div>
                 </NavLink>
-                <button onClick={handleLogout} className="hover:shadow-md hover:scale-110">LogOut</button>
+                <button onClick={handleLogout} className="hover:shadow-md hover:scale-110 text-white">LogOut</button>
               </ul>
             </div>
             <div onClick={handleNav} className="block md:hidden">

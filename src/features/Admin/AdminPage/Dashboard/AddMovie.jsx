@@ -33,9 +33,10 @@ function AddMovie() {
         cast={cast}
       />
       <div className="flex flex-col gap-6">
-        <h2 className="text-xl font-bold">Create Movie</h2>
-        <div className="w-full grid md:grid-cols-2 gap-6">
+        <h2 className="textfont-bold">Create Movie</h2>
+        <div className="w-full grid md:grid-cols-2 gap-6 text-white">
           <Input
+className="text-white"
             label="Movie Title"
             placeholder="Game of Thrones"
             type="text"
@@ -64,12 +65,12 @@ function AddMovie() {
           {/* img without title */}
           <div className="flex flex-col gap-2">
             <p className="text-border font-semibold text-sm">
-              Image without Title
+            Background images
             </p>
             <Uploder />
             <div className="w-32 h-32 p-2 bg-main border border-border rounded">
               <img
-                src="/images/movies/99.jpg"
+                src="/images/movie/77.jpg"
                 alt=""
                 className="w-full h-full object-cover rounded"
               />
@@ -83,7 +84,7 @@ function AddMovie() {
             <Uploder />
             <div className="w-32 h-32 p-2 bg-main border border-border rounded">
               <img
-                src="/images/movies/88.jpg"
+                src="/images/movie/77.jpg"
                 alt=""
                 className="w-full h-full object-cover rounded"
               />
@@ -109,12 +110,7 @@ function AddMovie() {
         </div>
         {/* CASTS */}
         <div className="w-full grid lg:grid-cols-2 gap-6 items-start ">
-          <button
-            onClick={() => setModalOpen(true)}
-            className="w-full py-4 bg-main border border-subMain border-dashed text-white rounded"
-          >
-            Add Cast
-          </button>
+          
           <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-4 grid-cols-2 gap-4">
             {UsersData.map((user, i) => (
               <div
@@ -128,22 +124,29 @@ function AddMovie() {
                 />
                 <p>{user.fullName}</p>
                 <div className="flex-rows mt-2 w-full gap-2">
-                  <button className="w-6 h-6 flex-colo bg-dry border border-border text-subMain rounded">
-                    <MdDelete />
+                  <button className="w-6 h-6 flex-colo bg-dry border border-border text-white rounded">
+                    <MdDelete />Delete
                   </button>
                   <button
                     onClick={() => {
                       setCast(user);
                       setModalOpen(true);
                     }}
-                    className="w-6 h-6 flex-colo bg-dry border border-border text-green-600 rounded"
+                    className="w-6 h-6 flex-colo bg-dry border border-border text-white rounded"
                   >
-                    <FaEdit />
+                    <FaEdit />Edit
                   </button>
                 </div>
               </div>
+              
             ))}
           </div>
+          <button
+            onClick={() => setModalOpen(true)}
+            className="w-full py-4 bg-main border border-subMain items-end justify-end border-dashed text-white rounded"
+          >
+            Add Cast
+          </button>
         </div>
         {/* SUBMIT */}
         <button className="bg-subMain w-full flex-rows gap-6 font-medium text-white py-4 rounded">

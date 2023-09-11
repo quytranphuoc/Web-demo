@@ -1,5 +1,5 @@
 import React from "react";
-import Table from "../../../../Components/layout/components/Table";
+import Tables from "../../../../Components/layout/components/Tables";
 import SideBarAdmin from "./SideBarAdmin";
 import { Movies } from "../../../../Data/MovieData";
 import LayoutAdmin from "../../../../Components/LayoutAdmin";
@@ -17,7 +17,7 @@ function FavoritesMovies() {
             </button>
           </div>
 
-          <Table data={Movies} admin={false} />
+          <Tables data={Movies} admin={false} />
         </div>
       </SideBarAdmin>
     </LayoutAdmin>

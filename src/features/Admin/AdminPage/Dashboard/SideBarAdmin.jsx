@@ -37,11 +37,6 @@ function SideBarAdmin({ children }) {
       icon: FaUsers,
     },
     {
-      name: "Update Profile",
-      link: "/admin/profile",
-      icon: FiSettings,
-    },
-    {
       name: "Favorites Movies",
       link: "/admin/favorites",
       icon: FaHeart,

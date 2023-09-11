@@ -24,16 +24,16 @@ const Banner = () => {
           alt={movie?.title}
         />
         <div className="absolute w-full top-[20%] p-4 md:p-8">
-          <h1 className="text-3xl md:text-5xl font-bold">{movie?.title}</h1>
+          <h1 className="md:text-5xl font-bold">{movie?.title}</h1>
           <div className="my-4">
-            <button className="border text-white border-gray-300 py-2 px-5 ml-4 text-center">
+            <button className="text-white py-2 px-5 ml-4 text-center">
               Watch Later
             </button>
           </div>
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-200 text-sm font-bold ">
             Released: {movie?.release_date}
           </p>
-          <p className="line-clamp-4 tex-gray-200">{movie?.overview}</p>
+          <p className="line-clamp-5 text-gray-200 font-bold w-25">{movie?.overview}</p>
         </div>
       </div>
     </div>

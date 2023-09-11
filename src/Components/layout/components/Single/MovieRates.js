@@ -8,7 +8,7 @@ import { UsersData } from "../../../../Data/MovieData";
 function MovieRates({ movie }) {
   const Ratings = [
     {
-      title: "0 - Poor",
+      title: "Null",
       value: 0,
     },
     {
@@ -36,7 +36,7 @@ function MovieRates({ movie }) {
   const [rating, setRating] = useState();
 
   return (
-    <div className="my-12">
+    <div className="my-12 text-white">
       <Titles title="Reviews" Icon={BsBookmarkStarFill} />
       <div className="mt-10 xl:grid flex-colo grid-cols-5 gap-12 bg-dry xs:p-10 py-10 px-2 sm:p-20 rounded">
         {/* write review */}

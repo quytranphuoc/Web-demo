@@ -45,7 +45,7 @@ export const Movies = [
     reviews: 2,
   },
   {
-    id: 3,
+    id: 4,
     name: "Lets Be a crops",
     title: "Lets Be a crops",
     desc: "Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.",
@@ -60,7 +60,7 @@ export const Movies = [
     reviews: 6,
   },
   {
-    id: 4,
+    id: 5,
     name: "Below her mouth",
     title: "Below her mouth",
     desc: "Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.",
@@ -75,7 +75,7 @@ export const Movies = [
     reviews: 56,
   },
   {
-    id: 5,
+    id: 6,
     name: "Legend of the seeker",
     title: "Legend of the seeker",
     desc: "Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.",
@@ -90,7 +90,7 @@ export const Movies = [
     reviews: 34,
   },
   {
-    id: 6,
+    id: 7,
     name: "Scarlet Heart",
     title: "Scarlet Heart",
     desc: "Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.",
@@ -105,7 +105,7 @@ export const Movies = [
     reviews: 0,
   },
   {
-    id: 7,
+    id: 8,
     name: "The Last Dance",
     title: "The Last Dance",
     desc: "Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.",
@@ -120,7 +120,7 @@ export const Movies = [
     reviews: 0,
   },
   {
-    id: 8,
+    id: 9,
     name: "Titanic",
     title: "Titanic",
     desc: "Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.",
@@ -135,7 +135,7 @@ export const Movies = [
     reviews: 1,
   },
   {
-    id: 9,
+    id: 10,
     name: "About Time of the Dead",
     title: "About Time of the Dead",
     desc: "Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.",
@@ -150,7 +150,7 @@ export const Movies = [
     reviews: 4,
   },
   {
-    id: 10,
+    id: 11,
     name: "Game of Thrones",
     title: "Game of Thrones",
     desc: "Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod There are many variations of passages of lorem Ipsum available, but the majority have suffered alteration.",

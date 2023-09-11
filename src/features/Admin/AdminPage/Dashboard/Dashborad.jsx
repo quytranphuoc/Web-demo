@@ -4,7 +4,8 @@ import SideBarAdmin from "./SideBarAdmin";
 import { HiViewGridAdd } from "react-icons/hi";
 import LayoutAdmin from "../../../../Components/LayoutAdmin";
 import { Movies } from "../../../../Data/MovieData";
-import Table from "../../../../Components/layout/components/Table";
+import Tables from "../../../../Components/layout/components/Tables";
+import { Pagination, Space } from "antd";
 function Dashboard() {
   const DashboardData = [
     {
@@ -29,7 +30,7 @@ function Dashboard() {
   return (
     <LayoutAdmin>
       <SideBarAdmin>
-        <h2 className="text-xl font-bold">Dashboard</h2>
+        <h2 className="text-white font-bold">Dashboard</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
           {DashboardData.map((data, index) => (
             <div
@@ -48,8 +49,9 @@ function Dashboard() {
             </div>
           ))}
         </div>
-        <h3 className="text-md font-medium my-6 text-border">Recent Movies</h3>
-        <Table data={Movies.slice(0, 5)} admin={true} />
+        <h3 className="text-md font-medium my-6 text-white">Recent Movies</h3>
+        <Tables dataSource={Movies}/>
+        {/* <Space size={8}  className="flex justify-end "> <Pagination pageSize={5} total={50}/></Space> */}
       </SideBarAdmin>
     </LayoutAdmin>
   );
