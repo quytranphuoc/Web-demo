@@ -60,7 +60,7 @@ function ContactPage() {
                   </h2>
                   </a>
                 ) : (
-                  <a  href={`https://www.google.com/https://goo.gl/maps/VN1e78fNda2VxkxH6/${encodeURIComponent(address)}`}>
+                  <a href="https://goo.gl/maps/VN1e78fNda2VxkxH6">
                   <h2>
                     <item.icon />
                   </h2>

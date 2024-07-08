@@ -9,7 +9,8 @@ import {
   Space,
   Pagination,
 } from "antd";
-import { Movies } from "../../../Data/MovieData";
+import { Movies } from "../../../../Data/MovieData";
+
 
 const initialData = [];
 
@@ -94,10 +95,16 @@ const Tables = (movie) => {
   const deleteUser = (user) => {
     Modal.confirm({
       title: "Confirm",
-      content: `Are you sure you want to delete user "${user.name}"?`,
+      content: `Are you sure you want to delete user "${user.title}"?`,
+      okButtonProps: {
+        style: {
+          backgroundColor: "green", 
+          color: "white",
+        },
+      },
       onOk: () => {
-        const updatedData = filteredData.filter((u) => u.id !== user.id);
-       
+        const updatedData = filteredData.filter((u) => u._id !== user._id);
+        setData(updatedData);
         message.success("User deleted successfully");
       },
     });
@@ -119,11 +126,9 @@ const Tables = (movie) => {
     }
     return originalElement;
   };
+  
   return (
     <div className="text-black">
-      {/* <button type="primary" onClick={showModal} className=''>
-        Add User
-      </button> */}
       <Table
         dataSource={filteredData}
         columns={columns}
@@ -132,7 +137,7 @@ const Tables = (movie) => {
       />
       <div style={{ textAlign: "right", textAlignLast: "auto" }}>
         <Pagination
-          className="item-center, border-collapse"
+    className=""
           current={currentPage}
           pageSize={pageSize}
           total={Movies.length}
@@ -148,6 +153,7 @@ const Tables = (movie) => {
         visible={modalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
+        okButtonProps={{style: { backgroundColor: "green", color:"white"}}}
       >
         <Form form={form} layout="vertical">
           <Form.Item

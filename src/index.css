@@ -62,8 +62,8 @@ li {
 .transitions {
   @apply transition duration-300 ease-in;
 }
-.custom-pagintion{ 
- color: #ff0000; /* Màu chữ đỏ */
+.custom-pagintion {
+  color: #ff0000; /* Màu chữ đỏ */
 }
 
 .zIndex {

@@ -50,20 +50,13 @@ function Footer() {
       title: "My Account",
       links: [
         {
-          name: "Dashboard",
-          link: "/dashboard",
-        },
-        {
           name: "My Favorites",
-          link: "/favorite",
+          link: "#",
         },
-        {
-          name: "Profile",
-          link: "/profile",
-        },
+
         {
           name: "Change Password",
-          link: "/password",
+          link: "#",
         },
       ],
     },
@@ -125,7 +118,6 @@ function Footer() {
             </p>
           </div>
         </div>
-        
       </div>
     </div>
   );

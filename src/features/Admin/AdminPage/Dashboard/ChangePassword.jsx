@@ -1,118 +1,154 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
+// import LayoutAdmin from "../../../../Components/LayoutAdmin";
+// import SideBarAdmin from "./SideBarAdmin";
+// import { Form, Space, Input, Button } from "antd";
+// import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+// function ChangePassword() {
+
+//   return (
+//     <LayoutAdmin>
+//       <SideBarAdmin className="">
+//         <div className=" flex-col gap-6">
+//           <h2 className="text-white">Change Password</h2>
+//           <div className="flex justify-center  items-center ">
+//             <Form className="p-4 w-2/3  shadow-md justify-center">
+//               <Input.Password
+             
+//                   className=" p-3 my-2 rounded"
+//                   type="password"
+//                   placeholder="Password"
+//                   autoComplete="password"
+//                 /><br/>
+//                 <Input.Password
+                
+//                   className="  p-3 my-2 rounded"
+//                   type="password"
+//                   placeholder="New Password"
+//                   autoComplete="current-password"
+//                   iconRender={(visible) => visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>}
+//                 /><br/>
+//                 <Input.Password
+               
+//                   className=" p-3 my-2 rounded"
+//                   type="password"
+//                   placeholder="Confirm Password"
+//                   autoComplete="current-password"
+//                 iconRender={(visible) => visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>}
+//                 />
+
+//               <div className="flex justify-center items-center my-4">
+//                 <button className="text-white font-sans ">
+//                 Ripristina password
+               
+//                 </button>
+//               </div>
+//             </Form>
+//           </div>
+//         </div>
+//       </SideBarAdmin>
+//     </LayoutAdmin>
+//   );
+// }
+
+// export default ChangePassword;
+
+import React, { useState } from "react";
 import LayoutAdmin from "../../../../Components/LayoutAdmin";
 import SideBarAdmin from "./SideBarAdmin";
-import { Form, Space, Input, Button } from "antd";
+import { Form, Input, Button, message } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-// import { useFirebaseApp, useAuth } from "reactfire";
-// import firebase from "firebase/app";
-// import "firebase/auth";
+import { auth } from "../../../../firebase"; // Thay đổi đường dẫn này để import cấu hình Firebase của bạn
+
 function ChangePassword() {
-  // const [oldPassword, setOldPassword] = useState("");
-  // const [newPassword, setNewPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
-  // const [error, setError] = useState(null);
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   const user = firebase.auth().currentUser;
-  //   if (user) {
-  //     const email = user.email;
-  //     setOldPassword(email);
-  //     setNewPassword("");
-  //     setConfirmPassword("");
-  //   }
-  // }, []);
+  const handleChangePassword = async (values) => {
+    setLoading(true);
+    try {
+      const user = auth.currentUser;
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
+      // Đổi mật khẩu sử dụng Firebase Authentication
+      await user.updatePassword(values.newPassword);
 
-  //   if (oldPassword === "") {
-  //     setError("Please enter your new password.");
-  //   }
-  //   if (newPassword === "") {
-  //     setError("Please enter your new password.");
-  //   }
-  //   if (confirmPassword === "") {
-  //     setError("Please confirm your new password.");
-  //   }
-  //   if (newPassword !== confirmPassword) {
-  //     setError("Your new passwords do not match.");
-  //     return;
-  //   }
-  //   // firebase
-  //   //   .auth()
-  //   //   .ChangePassword(oldPassword, newPassword)
-  //   //   .then(
-  //   //     () => {
-  //   //       setError(null);
-  //   //       setOldPassword("");
-  //   //       setNewPassword("");
-  //   //       setNewPassword("");
-  //   //       setConfirmPassword("");
-  //   //     },
-  //   //     (error) => {
-  //   //       setError(error.message);
-  //   //     }
-  //   //   );
-  //   const user = firebase.auth().currentUser;
-  //   if (user) {
-  //     const credential = firebase.auth.EmailAuthProvider.credential(
-  //       user.email,
-  //       oldPassword
-  //     );
-  //     user
-  //       .reauthenticateWithCredentail(credential)
-  //       .then(() => {
-  //         return user.updatePassword(newPassword);
-  //       })
-  //       .then(() => {
-  //         setError(null);
-  //         setOldPassword("");
-  //         setNewPassword("");
-  //         setError("");
-  //         setConfirmPassword("");
-  //       })
-  //       .catch((error) => {
-  //         setError(error.message);
-  //       });
-  //   }
-  // };
+      message.success("Đổi mật khẩu thành công.");
+      form.resetFields();
+    } catch (error) {
+      console.error("Lỗi khi đổi mật khẩu:", error);
+      message.error("Đã xảy ra lỗi khi đổi mật khẩu.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  // Reauthenticate the user with the old password
   return (
     <LayoutAdmin>
       <SideBarAdmin className="">
-        <div className=" flex-col gap-6">
+        <div className="flex-col gap-6">
           <h2 className="text-white">Change Password</h2>
-          <div className="flex justify-center  items-center ">
-            <Form className="p-4 w-2/3  shadow-md justify-center">
-              <Input.Password
-             
-                  className=" p-3 my-2 rounded"
-                  type="password"
+          <div className="flex justify-center items-center ">
+            <Form
+              form={form}
+              onFinish={handleChangePassword}
+              className="p-4 w-2/3  shadow-md justify-center"
+            >
+              <Form.Item
+                name="password"
+                rules={[{ required: true, message: "Vui lòng nhập mật khẩu hiện tại." }]}
+              >
+                <Input.Password
+                  className="p-3 my-2 rounded"
                   placeholder="Password"
                   autoComplete="password"
-                /><br/>
-                <Input.Password
-                
-                  className="  p-3 my-2 rounded"
-                  type="password"
-                  placeholder="New Password"
-                  autoComplete="current-password"
-                  iconRender={(visible) => visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>}
-                /><br/>
-                <Input.Password
-               
-                  className=" p-3 my-2 rounded"
-                  type="password"
-                  placeholder="Confirm Password"
-                  autoComplete="current-password"
-                iconRender={(visible) => visible ? <EyeTwoTone/> : <EyeInvisibleOutlined/>}
                 />
+              </Form.Item>
+              <Form.Item
+                name="newPassword"
+                rules={[{ required: true, message: "Vui lòng nhập mật khẩu mới." }]}
+              >
+                <Input.Password
+                  className="p-3 my-2 rounded"
+                  placeholder="New Password"
+                  autoComplete="new-password"
+                  iconRender={(visible) =>
+                    visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                  }
+                />
+              </Form.Item>
+              <Form.Item
+                name="confirmNewPassword"
+                rules={[
+                  {
+                    required: true,
+                    message: "Vui lòng xác nhận mật khẩu mới.",
+                  },
+                  ({ getFieldValue }) => ({
+                    validator(_, value) {
+                      if (!value || getFieldValue("newPassword") === value) {
+                        return Promise.resolve();
+                      }
+                      return Promise.reject("Mật khẩu mới và xác nhận không khớp.");
+                    },
+                  }),
+                ]}
+              >
+                <Input.Password
+                  className="p-3 my-2 rounded"
+                  placeholder="Confirm Password"
+                  autoComplete="new-password"
+                  iconRender={(visible) =>
+                    visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                  }
+                />
+              </Form.Item>
 
               <div className="flex justify-center items-center my-4">
-                <button className="text-white font-sans ">
-                Ripristina password
-               
+                <button
+                  type="primary"
+                  htmlType="submit"
+                  loading={loading}
+                >
+                      Ripristina password
                 </button>
               </div>
             </Form>

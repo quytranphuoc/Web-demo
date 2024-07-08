@@ -111,7 +111,7 @@ function Password() {
                 />
 
               <div className="flex justify-center items-center my-4">
-                <button className="text-white font-sans ">
+                <button className="text-white font-sans " >
                 Ripristina password
                
                 </button>

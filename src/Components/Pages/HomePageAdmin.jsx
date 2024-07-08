@@ -4,10 +4,15 @@ import Row from "../layout/HomePage/Slider/Row";
 import requests from "../../Request";
 import Layout from "../Layout";
 import Content from "../layout/HomePage/Content";
+import Dashboard_Admin from "../../features/Admin/AdminPage/Dashboard_Admin";
+import HeaderAd from "../layout/HeaderAd";
+import SideMenu from "../../features/Admin/AdminPage/SideMenu";
+import PageContent from "../../features/Admin/AdminPage/PageContent";
+import Footer from "../layout/Footer";
 const HomePageAdmin = () => {
   return (
     <>
-      <Layout>
+      {/* <Layout>
         <Banner />
         <Row rowID={1} title="UpComing" fetchURL={requests.requestUpcoming} />
         <Row rowID={2} title="Popular" fetchURL={requests.requestPopular} />
@@ -18,8 +23,17 @@ const HomePageAdmin = () => {
           title="Now playing"
           fetchURL={requests.requestNow_playing}
         />
+
         <Content />
-      </Layout>
+      </Layout> */}
+      <div className=" h-full w-full">
+        <HeaderAd />
+        <div className="flex flex-1 justify-start items-start bg-opacity-5 bg-black">
+          <SideMenu></SideMenu>
+        </div>
+        
+        <Footer />
+      </div>
     </>
   );
 };

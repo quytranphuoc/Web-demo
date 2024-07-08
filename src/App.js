@@ -24,11 +24,12 @@ import AddMovie from "./features/Admin/AdminPage/Dashboard/AddMovie";
 import MovieList from "./features/Admin/AdminPage/Dashboard/MovieList";
 import Categories from "./features/Admin/AdminPage/Dashboard/Categories";
 import Users from "./features/Admin/AdminPage/Dashboard/Users";
-import FavoritesMovies from "./features/Admin/AdminPage/Dashboard/FavoritesMovies";
 import UpdateProfile from "./features/Admin/AdminPage/Dashboard/UpdateProfile";
 import ChangePassword from "./features/Admin/AdminPage/Dashboard/ChangePassword";
 import SingleMovieAdmin from "./Components/Pages/SingleMovieAdmin";
 import WatchMovieAdmin from "./Components/Pages/WatchMovieAdmin";
+import SideMenu from "./features/Admin/AdminPage/SideMenu";
+import PageContent from "./features/Admin/AdminPage/PageContent";
 function App() {
   Aos.init();
   return (
@@ -53,27 +54,19 @@ function App() {
               </ProtectedRoute>
             }
           />
-          {/* admin */}
-          {/* /* <Route path="login-admin" element={<LoginAdmin />} />
-          <Route path="/*" element={<HomePageAdmin />} />
-          {/* <Route path="" element={<ProtectedRouteAdmin />}>
-            <Route path="dash/dashboard" element={<Dashboard_Admin />} />
-            <Route path="dashboard/dash" element={<Dashboard />} />
-            <Route path="dashboard/adminav" element={<AdminNav />} />
-          </Route> */}
+
           <Route path="login-admin" element={<LoginAdmin />} />
           <Route
             path="/*"
             element={
-              // <ProtectedRouteAdmin>
-              //   <Dashboard_Admin />
-              // </ProtectedRouteAdmin>
               <ProtectedRouteAdmin>
                 <HomePageAdmin />
               </ProtectedRouteAdmin>
             }
           />
           <Route path="/*admin" element={<HomePageAdmin />} />
+          <Route path="/*sidemenu" element={<SideMenu />} />
+          <Route path="/*pagecontent" element={<PageContent />} />
           <Route path="/*movies" element={<MoviesPage />} />
           <Route path="/*single-movie" element={<SingleMovieAdmin />} />
           <Route path="/*watch-movie" element={<WatchMovieAdmin />} />
@@ -86,7 +79,6 @@ function App() {
           <Route path="/admin/addmovie" element={<AddMovie />} />
           <Route path="/admin/categories" element={<Categories />} />
           <Route path="/admin/users" element={<Users />} />
-          <Route path="/admin/favorites" element={<FavoritesMovies />} />
           <Route path="/admin/profile" element={<UpdateProfile />} />
           <Route path="/admin/password" element={<ChangePassword />} />
         </Routes>

@@ -4,7 +4,7 @@ import SideBarAdmin from "./SideBarAdmin";
 import { HiViewGridAdd } from "react-icons/hi";
 import LayoutAdmin from "../../../../Components/LayoutAdmin";
 import { Movies } from "../../../../Data/MovieData";
-import Tables from "../../../../Components/layout/components/Tables";
+import Tables from "../../../../Components/layout/components/Table/Tables";
 import { Pagination, Space } from "antd";
 function Dashboard() {
   const DashboardData = [

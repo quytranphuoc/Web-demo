@@ -8,7 +8,7 @@ import { TbHomeHeart } from "react-icons/tb";
 import Layout from "../../../Components/Layout";
 import SideBar from "./SideBar";
 import { Movies } from "../../../Data/MovieData";
-import Tables from "../../../Components/layout/components/Tables";
+import Tables from "../../../Components/layout/components/Table/Tables";
 import Titles from "../../../Components/layout/components/Titles";
 const SavedShows = ({ movie }) => {
   const [movies, setMovies] = useState([]);
@@ -49,7 +49,8 @@ const SavedShows = ({ movie }) => {
           <TbHomeHeart />
         SavedShows
         </h2> */}
-          <div className="bg-gradient-to-r from-[var(--primary-purple)] to-[var(--primary-orange)] text-white py-3 rounded-sm">
+        {/* bg-gradient-to-r from-[var(--primary-purple)] to-[var(--primary-orange)] */}
+          <div className="text-white py-3 rounded-sm">
             {" "}
             <Titles title="Favorites Movies" Icon={TbHomeHeart} />
           </div>

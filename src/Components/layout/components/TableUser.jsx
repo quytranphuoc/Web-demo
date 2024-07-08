@@ -112,9 +112,14 @@ const Tables = (data) => {
     Modal.confirm({
       title: "Confirm",
       content: `Are you sure you want to delete user "${user.title}"?`,
+      okButtonProps: {
+        style: {
+          backgroundColor: "green", // Màu nền nút OK
+          color: "white", // Màu văn bản nút OK
+        },
+      },
       onOk: () => {
-        const filteredData = data.filter((u) => u.id !== user.id);
-        setData(filteredData);
+        const updatedData = filteredData.filter((u) => u._id !== user._id);
         message.success("User deleted successfully");
       },
     });
@@ -162,6 +167,7 @@ const Tables = (data) => {
         visible={modalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
+        okButtonProps={{style: { backgroundColor: "green", color:"white"}}}
       >
         <Form form={form} layout="vertical">
           <Form.Item

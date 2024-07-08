@@ -48,6 +48,7 @@ function UpdateProfile() {
   };
   const save = async (key) => {
     try {
+      
       const row = await form.validateFields();
       const newData = [...data];
       const index = newData.findIndex((item) => key === item.key);

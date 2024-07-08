@@ -24,9 +24,16 @@ const Tables = () => {
     { title: "TITLE", dataIndex: "title" },
     {
       title: "Action",
+      style: "center",
       dataIndex: "action",
       render: (_, record) => (
-        <Space>
+        <Space
+          // style={{
+          //   display: "flex",
+          //   justifyContent: "center",
+          //   alignContent: "center",
+          // }}
+        >
           <Button className="edit" type="link" onClick={() => editUser(record)}>
             Edit
           </Button>
@@ -91,6 +98,12 @@ const Tables = () => {
     Modal.confirm({
       title: "Confirm",
       content: `Are you sure you want to delete user "${user.title}"?`,
+      okButtonProps: {
+        style: {
+          backgroundColor: "green", // Màu nền nút OK
+          color: "white", // Màu văn bản nút OK
+        },
+      },
       onOk: () => {
         const updatedData = filteredData.filter((u) => u._id !== user._id);
         message.success("User deleted successfully");
@@ -122,7 +135,14 @@ const Tables = () => {
         rowKey="_id"
         pagination={false}
       />
-      <div style={{ textAlign: "right", textAlignLast:"auto"}}>
+      <div
+        style={{
+          textAlign: "right",
+          textAlignLast: "auto",
+          display: "flex",
+          justifyContent: "flex-end",
+        }}
+      >
         <Pagination
           className="item-center, border-collapse"
           current={currentPage}
@@ -141,6 +161,7 @@ const Tables = () => {
         visible={modalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
+        okButtonProps={{ style: { backgroundColor: "green", color: "white" } }}
       >
         <Form form={form} layout="vertical">
           <Form.Item
